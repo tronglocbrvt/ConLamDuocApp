@@ -12,9 +12,12 @@ class RawDataManager{
   static void initRawData()  async {
     //init users
     String jsonContent = await rootBundle.loadString("assets/data/users/user1.json");
-    User user1 = MapperObject.create<User>(jsonContent);
-    userList.add(user1);
+    User user = MapperObject.create<User>(jsonContent);
+    userList.add(user);
 
+    jsonContent = await rootBundle.loadString("assets/data/users/user2.json");
+    user = MapperObject.create<User>(jsonContent);
+    userList.add(user);
 
   }
 

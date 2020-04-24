@@ -313,6 +313,7 @@ class _Color {
   Color discussionLayer               = Color.fromRGBO(253, 99, 44, 0.2);
   Color notiLayer                     = Color.fromRGBO(253, 99, 44, 0.2);
 
+  Color navigationBar                 = Color(0xFFC6FF59);
 }
 
 class _MyIcons {
@@ -321,6 +322,7 @@ class _MyIcons {
  final String appbarChallenge = 'assets/icons/challenge.png';
  final String appbarGame = 'assets/icons/game.png';
  final String appbarProfile = 'assets/icons/profile.png';
+ final String appbarSearch = 'assets/icons/search.png';
 }
 
 class _Images {
@@ -332,6 +334,12 @@ class _Images {
   final String button_like_nocolor = "assets/images/button_like_nocolor.png";
   final String button_login = "assets/images/button_login.png";
   final String button_quiz = "assets/images/button_quiz.png";
+  final String title_challenge = "assets/images/title_challenge.png";
+  final String title_game = "assets/images/title_game.png";
+  final String title_hello = "assets/images/title_hello.png";
+  final String title_home = "assets/images/title_home.png";
+  final String title_lesson = "assets/images/title_lesson.png";
+  final String title_profile = "assets/images/title_profile.png";
 }
 
 

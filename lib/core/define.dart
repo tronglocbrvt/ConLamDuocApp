@@ -22,6 +22,7 @@ enum PlatformType {
   Android,
 }
 
+@reflector
 enum Gender{
   Male,
   Female

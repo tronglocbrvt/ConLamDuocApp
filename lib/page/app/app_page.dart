@@ -4,7 +4,7 @@ import 'package:conlamduoc/page/challenge/challenge_page.dart';
 import 'package:conlamduoc/page/feed/feed_page.dart';
 import 'package:conlamduoc/page/game/game_page.dart';
 import 'package:conlamduoc/page/lesson/lesson_page.dart';
-import 'package:conlamduoc/page/profile/profile_pae.dart';
+import 'package:conlamduoc/page/search/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -39,8 +39,8 @@ class _AppPageState extends State<AppPage> {
       //title: Text(R.strings.game),
     ),
     BottomNavigationBarItem(
-      icon: Image.asset(R.myIcons.appbarProfile, width: 28, height: 28),
-      activeIcon: Image.asset(R.myIcons.appbarProfile, width: 28, height: 28, color: R.colors.blurMajorOrange),
+      icon: Image.asset(R.myIcons.appbarSearch, width: 28, height: 28),
+      activeIcon: Image.asset(R.myIcons.appbarSearch, width: 28, height: 28, color: R.colors.blurMajorOrange),
       //title: Text(R.strings.profile),
     )
   ];
@@ -50,7 +50,7 @@ class _AppPageState extends State<AppPage> {
     LessonPage(), 
     ChallengePage(),
     GamePage(),
-    ProfilePage(),
+    SearchPage(),
   ];
 
   @override

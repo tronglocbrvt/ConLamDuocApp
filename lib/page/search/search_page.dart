@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:conlamduoc/core/R.dart';
 import 'package:conlamduoc/core/helper.dart';
 
-class GamePage extends StatelessWidget{
+class SearchPage extends StatelessWidget{
 
    @override 
   Widget build(BuildContext context){
@@ -13,14 +13,14 @@ class GamePage extends StatelessWidget{
       appBar: CupertinoNavigationBar(
         backgroundColor: R.colors.navigationBar,
         leading: Image.asset(R.images.logo, width: R.appRatio.appWidth70,),
-        middle: Image.asset(R.images.title_game, height: R.appRatio.appSpacing50,),
+        middle: Image.asset(R.images.title_home, height: R.appRatio.appSpacing50,),
         trailing: GestureDetector( 
-          onTap: ()=>pushPage(context, ProfilePage()),
+          onTap: ()=>showPage(context, ProfilePage()),
           child: Image.asset(R.myIcons.appbarProfile, height: R.appRatio.appSpacing30,),
         ),
       ),
       backgroundColor: R.colors.appBackground,
-      body: Center(child: Text(R.strings.game),),
+      body: Center(child: Text("Tìm kiếm"),),
     );
   }
 }

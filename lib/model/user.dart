@@ -19,7 +19,7 @@ class User extends MapperObject {
   String phone;
   String country;
   String city;
-  int gender; //Gender này là enum
+  Gender gender;
   num weight;
   num height;
   String accessToken;

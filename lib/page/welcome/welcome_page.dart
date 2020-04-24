@@ -106,12 +106,16 @@ class WelcomePage extends StatelessWidget {
   }
 
   _singIn(BuildContext context){
-    print(RawDataManager.userList[0].username);
-    if(_usernameController.text == RawDataManager.userList[0].username
-    && _passwordController.text =="123")
-      showPage(context, AppPage());
-    else
-      showAlert(context, R.strings.notice, "Đăng nhập không thành công", null);
+    // print(RawDataManager.userList[0].username);
+    // if((_usernameController.text == RawDataManager.userList[0].username)
+    // ||(_usernameController.text == RawDataManager.userList[1].username)
+    // && _passwordController.text =="123")
+    //   showPage(context, AppPage());
+    // else
+    //   showAlert(context, R.strings.notice, "Đăng nhập không thành công", null);
+
+    //Debug
+    pushPage(context, AppPage());
 
   }
 

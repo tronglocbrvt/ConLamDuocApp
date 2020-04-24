@@ -1,0 +1,46 @@
+{
+    "data":[
+        {
+            "userId": 1,
+            "username": "tranhaiyen",
+            "email": "tranhainam@gmail.com",
+            "img": null,
+            "name": "Tran Hai Yen",
+            "nameSlug": null,
+            "isActive": true,
+            "deviceToken": "123",
+            "birthday": "1366794446000",
+            "phone": "0909090909",
+            "country": "Viet Nam",
+            "city": "Ho Chi Minh",
+            "gender": 1,
+            "weight": 30,
+            "height": 125,
+            "accessToken": "ABC",
+            "lastLogin": "1587719246000",
+            "addDate": "1587719246000",
+            "updateDate": "1587719246000"
+        },
+        {
+            "userId": 2,
+            "username": "nmanh",
+            "email": "tranhaiyen@gmail.com",
+            "img": null,
+            "name": "Nguyen Minh Anh",
+            "nameSlug": null,
+            "isActive": true,
+            "deviceToken": "123",
+            "birthday": "1366794446000",
+            "phone": "0909090909",
+            "country": "Viet Nam",
+            "city": "Ho Chi Minh",
+            "gender": 1,
+            "weight": 30,
+            "height": 125,
+            "accessToken": "ABC",
+            "lastLogin": "1587719246000",
+            "addDate": "1587719246000",
+            "updateDate": "1587719246000"
+        }
+    ]
+}

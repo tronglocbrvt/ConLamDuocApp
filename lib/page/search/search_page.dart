@@ -7,7 +7,7 @@ import 'package:conlamduoc/core/helper.dart';
 
 class SearchPage extends StatelessWidget{
 
-   @override 
+  @override 
   Widget build(BuildContext context){
     return Scaffold(
       appBar: CupertinoNavigationBar(

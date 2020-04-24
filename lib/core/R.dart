@@ -323,6 +323,7 @@ class _MyIcons {
  final String appbarGame = 'assets/icons/game.png';
  final String appbarProfile = 'assets/icons/profile.png';
  final String appbarSearch = 'assets/icons/search.png';
+ final String calendar = "assets/icons/calendar.png";
 }
 
 class _Images {

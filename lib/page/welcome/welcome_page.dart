@@ -1,6 +1,7 @@
 
 import 'package:conlamduoc/core/helper.dart';
 import 'package:conlamduoc/page/app/app_page.dart';
+import 'package:conlamduoc/page/signup/signup_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -81,6 +82,7 @@ class WelcomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       GestureDetector(
+                        onTap: ()=>_signUp(context),
                         child: Text("Tạo tài khoản mới", style: TextStyle(color: Colors.lightBlue),),
                         ),
                       GestureDetector(
@@ -115,8 +117,13 @@ class WelcomePage extends StatelessWidget {
     //   showAlert(context, R.strings.notice, "Đăng nhập không thành công", null);
 
     //Debug
+    print(RawDataManager.userList[0].username);
     pushPage(context, AppPage());
 
+  }
+
+  _signUp(BuildContext context){
+    pushPage(context, SignUpPage());
   }
 
 }

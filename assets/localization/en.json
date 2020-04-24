@@ -1,0 +1,13 @@
+{
+
+    "error": "error",
+    "notice": "Notice",
+    "ok": "OK",
+
+    "feed": "feed",
+    "lesson":"lesson",
+    "challenge": "challenge",
+    "game":"game",
+    "profile": "profile"
+    
+}

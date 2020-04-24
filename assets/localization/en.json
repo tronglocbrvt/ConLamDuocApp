@@ -1,13 +1,13 @@
 {
 
-    "error": "error",
-    "notice": "Notice",
+    "error": "Lỗi",
+    "notice": "Thông báo",
     "ok": "OK",
 
-    "feed": "feed",
-    "lesson":"lesson",
-    "challenge": "challenge",
-    "game":"game",
-    "profile": "profile"
+    "feed": "Nhà",
+    "lesson":"Bài học",
+    "challenge": "Thử thách",
+    "game":"Game",
+    "profile": "Thông tin cá nhân"
     
 }

@@ -9,11 +9,13 @@ import 'package:flutter/services.dart';
 import 'package:conlamduoc/core/R.dart';
 import 'package:conlamduoc/main.dart';
 import 'package:conlamduoc/core/define.dart';
+import 'package:conlamduoc/manager/raw_data_manager.dart';
 
 // === MAIN === //
 Future<void> initialize(BuildContext context) async {
   await setLanguage("en");
-  //R.initAppRatio(context);
+  R.initAppRatio(context);
+  RawDataManager.initRawData();
 }
 
 enum RouteType {

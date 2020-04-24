@@ -46,6 +46,9 @@ flutter:
 
   
   assets:
+
+    - assets/data/users/user1.json
+
     - assets/localization/en.json
 
     - assets/logo/logo.png
@@ -55,3 +58,11 @@ flutter:
     - assets/icons/game.png
     - assets/icons/challenge.png
     - assets/icons/profile.png
+
+    - assets/images/welcome_background.png
+    - assets/images/button_challenge.png
+    - assets/images/button_join.png
+    - assets/images/button_like_color.png
+    - assets/images/button_like_nocolor.png
+    - assets/images/button_login.png
+    - assets/images/button_quiz.png

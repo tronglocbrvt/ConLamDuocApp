@@ -8,7 +8,7 @@ import 'package:conlamduoc/util/reflector.dart';
 @reflector
 class User extends MapperObject {
   int userId;
-  String code;
+  String username;
   String email;
   String img;
   String name;
@@ -19,7 +19,7 @@ class User extends MapperObject {
   String phone;
   String country;
   String city;
-  Gender gender; //Gender này là enum
+  int gender; //Gender này là enum
   num weight;
   num height;
   String accessToken;
@@ -36,4 +36,11 @@ class User extends MapperObject {
     }
     return false;
   }
+
+  String getUsername(){
+    return username;
+  }
+  
 }
+
+

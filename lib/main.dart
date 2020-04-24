@@ -1,5 +1,6 @@
 import 'package:conlamduoc/core/helper.dart';
 import 'package:conlamduoc/page/app/app_page.dart';
+import 'package:conlamduoc/page/welcome/welcome_page.dart';
 import 'package:flutter/material.dart';
 
 import 'main.reflectable.dart';
@@ -68,6 +69,6 @@ class _SplashPageState extends State<StatefulWidget> {
   Future<void> _initApp() {
     return Future.delayed(
             Duration(milliseconds: 2000), () => initialize(context))
-        .then((_) => showPage(context, AppPage()));
+        .then((_) => showPage(context, WelcomePage()));
   }
 }

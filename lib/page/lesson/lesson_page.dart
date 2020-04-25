@@ -77,7 +77,7 @@ class _LessonPageState extends State<LessonPage> {
                 int coins = element.coins;
                 String lessonField = element.lessonField;
                 String thumbnailImageUrl = element.thumbnailImageUrl;
-                String webUrl = element.videoUrl;
+                String videoUrl = element.videoUrl;
 
                 return Container(
                   margin: EdgeInsets.only(
@@ -93,7 +93,7 @@ class _LessonPageState extends State<LessonPage> {
                     title: title,
                     coins: coins,
                     lessonField: lessonField,
-                    webUrl: webUrl,
+                    videoUrl: videoUrl,
                   ),
                 );
               },

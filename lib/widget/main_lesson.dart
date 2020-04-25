@@ -10,7 +10,7 @@ class MainLesson extends StatelessWidget {
   final String content;
   final int coins;
   final String lessonField;
-  final String webUrl;
+  final String videoUrl;
 
   static final double radius = 10;
 
@@ -21,7 +21,7 @@ class MainLesson extends StatelessWidget {
     this.content,
     this.coins,
     this.lessonField,
-    this.webUrl,
+    this.videoUrl,
   });
 
   @override
@@ -31,7 +31,7 @@ class MainLesson extends StatelessWidget {
         pushPage(
           context,
           LessonDetail(
-            selectedUrl: this.webUrl,
+            selectedUrl: this.videoUrl,
             title: this.title,
             coins: this.coins,
             content: this.content,

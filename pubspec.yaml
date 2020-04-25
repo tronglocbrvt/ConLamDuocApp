@@ -56,12 +56,7 @@ flutter:
     - assets/data/users/user1.json
     - assets/data/users/user2.json
     - assets/data/userList.json
-    - assets/data/lessons/lesson1.json
-    - assets/data/lessons/lesson2.json
-    - assets/data/lessons/lesson3.json
-    - assets/data/lessons/lesson4.json
-    - assets/data/lessons/lesson5.json
-    - assets/data/lessons/lesson6.json
+    - assets/data/lessons/lessonList.json
     - assets/localization/en.json
 
     - assets/logo/logo.png

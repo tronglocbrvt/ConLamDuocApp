@@ -4,6 +4,7 @@ import 'package:conlamduoc/manager/raw_data_manager.dart';
 import 'package:conlamduoc/model/challenge.dart';
 import 'package:conlamduoc/model/lesson.dart';
 import 'package:conlamduoc/model/user.dart';
+import 'package:conlamduoc/widget/loading_dot.dart';
 import 'package:conlamduoc/widget/search_item_cell.dart';
 import 'package:conlamduoc/widget/main_lesson.dart';
 import 'package:conlamduoc/widget/main_challenge.dart';
@@ -29,22 +30,23 @@ class _SearchPageState extends State<SearchPage> {
   List<Challenge> challengeList;
   List<Lesson> lessonList;
 
-  void _getNotificationList() {
+  void _getAllDataList() {
     if (!_isLoading) {
       setState(() {
         _isLoading = true;
       });
     }
 
+    lessonList.addAll(RawDataManager.lessonList);
+    userList.addAll(RawDataManager.userList);
+    challengeList.addAll(RawDataManager.challengeList);
+
     Future.delayed(Duration(milliseconds: 1000), () {
       setState(() {
         _isLoading = !_isLoading;
       });
+      _requireSearchBoxFocus();
     });
-
-    lessonList.addAll(RawDataManager.lessonList);
-    userList.addAll(RawDataManager.userList);
-    challengeList.addAll(RawDataManager.challengeList);
   }
 
   _buildLessonList() {
@@ -150,12 +152,11 @@ class _SearchPageState extends State<SearchPage> {
     super.initState();
     _textSearchController = TextEditingController();
     _searchFocusNode = FocusNode();
-    _requireSearchBoxFocus();
     _isLoading = true;
     lessonList = List<Lesson>();
     userList = List<User>();
     challengeList = List<Challenge>();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _getNotificationList());
+    WidgetsBinding.instance.addPostFrameCallback((_) => _getAllDataList());
   }
 
   @override
@@ -217,7 +218,7 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   void _requireSearchBoxFocus() {
-    Future.delayed(Duration(milliseconds: 800), () {
+    Future.delayed(Duration(milliseconds: 500), () {
       _searchFocusNode.requestFocus();
     });
   }
@@ -373,13 +374,15 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ),
           ),
-          body: TabBarView(
-            children: [
-              Center(child: _buildUserlist()),
-              Center(child: _buildChallengelist()),
-              Center(child: _buildLessonList()),
-            ],
-          ),
+          body: (_isLoading
+              ? LoadingDotStyle02()
+              : TabBarView(
+                  children: [
+                    Center(child: _buildUserlist()),
+                    Center(child: _buildChallengelist()),
+                    Center(child: _buildLessonList()),
+                  ],
+                )),
         ),
       ),
     );

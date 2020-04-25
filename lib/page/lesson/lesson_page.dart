@@ -33,35 +33,47 @@ class _LessonPageState extends State<LessonPage> {
       });
     }
 
+    lessonList.addAll(RawDataManager.lessonList);
+
     Future.delayed(Duration(milliseconds: 1000), () {
       setState(() {
         _isLoading = !_isLoading;
       });
     });
-
-    lessonList.addAll(RawDataManager.lessonList);
   }
 
   @override
   Widget build(BuildContext context) {
     Widget _buildWidget = Scaffold(
-      appBar: CupertinoNavigationBar(
-        backgroundColor: R.colors.navigationBar,
-        leading: Image.asset(
-          R.images.logo,
-          width: R.appRatio.appWidth70,
+      appBar: AppBar(
+        backgroundColor: R.colors.appBarBackground,
+        centerTitle: true,
+        leading: Container(
+          margin: EdgeInsets.only(left: 10),
+          child: Image.asset(R.images.logo),
         ),
-        middle: Image.asset(
-          R.images.title_lesson,
-          height: R.appRatio.appSpacing50,
-        ),
-        trailing: GestureDetector(
-          onTap: () => pushPage(context, ProfilePage()),
-          child: Image.asset(
-            R.myIcons.appbarProfile,
-            height: R.appRatio.appSpacing30,
+        title: Text(
+          R.strings.lesson.toUpperCase(),
+          textScaleFactor: 1.0,
+          style: TextStyle(
+            color: R.colors.strongBlue,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
           ),
         ),
+        actions: [
+          Container(
+            margin: EdgeInsets.only(right: 10),
+            child: GestureDetector(
+              onTap: () => pushPage(context, ProfilePage()),
+              child: Image.asset(
+                R.myIcons.appbarProfile,
+                width: 25,
+                height: 25,
+              ),
+            ),
+          ),
+        ],
       ),
       backgroundColor: R.colors.appBackground,
       body: (_isLoading

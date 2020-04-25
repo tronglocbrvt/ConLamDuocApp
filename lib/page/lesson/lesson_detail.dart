@@ -151,9 +151,8 @@ class _LessonDetailState extends State<LessonDetail> {
                   children: [
                     AspectRatio(
                       aspectRatio: 16 / 9,
-                      child: ImageCacheManager.getImage(
-                        url: R.images.default_image,
-                        fit: BoxFit.cover,
+                      child: Container(
+                        color: Colors.black,
                       ),
                     ),
                     CustomVideoPlayer(

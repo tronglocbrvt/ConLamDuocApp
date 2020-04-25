@@ -209,7 +209,7 @@ class CustomCell extends StatelessWidget {
             style: (this.titleStyle ??
                 TextStyle(
                   fontSize: R.appRatio.appFontSize18,
-                  color: R.colors.contentText,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 )),
           ),
@@ -226,7 +226,7 @@ class CustomCell extends StatelessWidget {
                     style: (this.subTitleStyle ??
                         TextStyle(
                           fontSize: R.appRatio.appFontSize14,
-                          color: R.colors.contentText,
+                          color: Colors.black,
                         )),
                   ),
                 )
@@ -260,7 +260,7 @@ class CustomCell extends StatelessWidget {
                           style: (this.firstAddedTitleStyle ??
                               TextStyle(
                                 fontSize: R.appRatio.appFontSize12,
-                                color: R.colors.contentText,
+                                color: Colors.black,
                               )),
                         ),
                       ),
@@ -282,7 +282,7 @@ class CustomCell extends StatelessWidget {
                             style: (this.firstAddedTitleStyle ??
                                 TextStyle(
                                   fontSize: R.appRatio.appFontSize12,
-                                  color: R.colors.contentText,
+                                  color: Colors.black,
                                 )),
                           ),
                         ),

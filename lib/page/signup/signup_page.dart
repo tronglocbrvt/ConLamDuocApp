@@ -51,8 +51,8 @@ class _SignUpPageState extends State<SignUpPage> {
             Align( 
               alignment: Alignment.center,
               child: Container(      
-              height: 340,
-              margin: EdgeInsets.only(),
+              height: R.appRatio.deviceHeight * 0.5,
+              margin: EdgeInsets.only(top: R.appRatio.deviceHeight*0.1),
               child: ScrollConfiguration( 
                 behavior: MyBehavior(),
                 child: SingleChildScrollView(
@@ -60,13 +60,13 @@ class _SignUpPageState extends State<SignUpPage> {
                 children: <Widget>[
                   //SizedBox(height: R.appRatio.appWidth300 - R.appRatio.appSpacing20),
                   Container(
-                    width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50*2),
+                    width: R.appRatio.deviceWidth*0.8,
                     margin: EdgeInsets.only(left: R.appRatio.appSpacing45),
                     child: Text("Họ tên"),
                   ),
                   SizedBox(height: R.appRatio.appSpacing5,),
                   Container( 
-                    padding: EdgeInsets.only(left: R.appRatio.appSpacing50, right: R.appRatio.appSpacing50),
+                    width: R.appRatio.deviceWidth*0.8,
                     child: TextField(
                       controller: _nameController,
                       decoration: new InputDecoration(
@@ -83,18 +83,18 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   SizedBox(height: R.appRatio.appSpacing15,),
                   Container(
-                    width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50*2),
+                    width: R.appRatio.deviceWidth*0.8,
                     margin: EdgeInsets.only(left: R.appRatio.appSpacing45),
                     child: Text("Ngày sinh"),
                   ),
                   SizedBox(height: R.appRatio.appSpacing5,),
                   Container( 
-                    width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50*2),
+                    width: R.appRatio.deviceWidth*0.8,
                     child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Container( 
-                        width: 270,
+                        width: R.appRatio.deviceWidth*0.8 - 40,
                         child: TextField(
                           controller: _birthdayController,
                           enabled: false,
@@ -128,19 +128,18 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   SizedBox(height: R.appRatio.appSpacing15,),
                   Container(
-                    width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50*2),
+                    width: R.appRatio.deviceWidth*0.8,
                     margin: EdgeInsets.only(left: R.appRatio.appSpacing45),
                     child: Text("Giới tính"),
                   ),
                   SizedBox(height: R.appRatio.appSpacing5,),
                   Container( 
                     height: 40,
-                    width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50*2),
+                    width: R.appRatio.deviceWidth*0.8,
                     child:  Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                       Expanded(
-                            flex: 1,
                             child: RadioListTile(
                               value: Gender.Male,
                               groupValue: _radioValue,
@@ -154,7 +153,6 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                           ),
                           Expanded(
-                            flex: 1,
                             child: RadioListTile(
                               value: Gender.Female,
                               groupValue: _radioValue,
@@ -171,7 +169,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   SizedBox(height: R.appRatio.appSpacing20,),
                   Container(
-                    width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50*2),
+                    width: R.appRatio.deviceWidth*0.8,
                     margin: EdgeInsets.only(left: R.appRatio.appSpacing45),
                     child: Text("Email phụ huynh"),
                   ),
@@ -194,7 +192,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   SizedBox(height: R.appRatio.appSpacing20,),
                   Container(
-                    width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50*2),
+                    width: R.appRatio.deviceWidth*0.8,
                     margin: EdgeInsets.only(left: R.appRatio.appSpacing45),
                     child: Text("SĐT phụ huynh"),
                   ),
@@ -217,7 +215,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   SizedBox(height: R.appRatio.appSpacing20,),
                   Container(
-                    width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50*2),
+                    width: R.appRatio.deviceWidth*0.8,
                     margin: EdgeInsets.only(left: R.appRatio.appSpacing45),
                     child: Text("Tên đăng nhập"),
                   ),
@@ -240,7 +238,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   SizedBox(height: R.appRatio.appSpacing20,),
                   Container(
-                    width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50*2),
+                    width: R.appRatio.deviceWidth*0.8,
                     margin: EdgeInsets.only(left: R.appRatio.appSpacing45),
                     child: Text("Mật khẩu"),
                   ),
@@ -264,7 +262,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   SizedBox(height: R.appRatio.appSpacing20,),
                   Container(
-                    width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50*2),
+                    width: R.appRatio.deviceWidth*0.8,
                     margin: EdgeInsets.only(left: R.appRatio.appSpacing45),
                     child: Text("Nhập lại mật khẩu"),
                   ),

@@ -3,11 +3,15 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:conlamduoc/core/R.dart';
 
-class SearchItemCell extends StatelessWidget {
+class SearchItemCell extends StatefulWidget {
+  @override
+  _SearchItemCellState createState() => _SearchItemCellState();
+  
   final EdgeInsets padding;
   final Color bgColor;
-  final String imageLeading;
+  final AssetImage imageLeading;
   Widget imageTrailing;
+  Widget trailingAfterTap;
   final String title;
   final double  titleSize;
   final Widget description;
@@ -18,6 +22,7 @@ class SearchItemCell extends StatelessWidget {
     @required this.title,
     @required this.description,
     @required this.onTap,
+    this.trailingAfterTap,
     this.titleSize = 17,
     this.imageTrailing,
     this.padding = const EdgeInsets.all(10),
@@ -25,17 +30,22 @@ class SearchItemCell extends StatelessWidget {
     this.bgColor = Colors.white,
   });
 
+}
+
+class _SearchItemCellState extends State<SearchItemCell> {
+
+  bool tapped = false;
+
   @override
   Widget build(BuildContext context) {
-    print(this.titleSize);
+    print(widget.titleSize);
     return GestureDetector( 
-      onTap: this.onTap,
+      onTap: this.widget.onTap,
       child: Container(
-      height: 90,
       width: R.appRatio.deviceWidth - 40,
       constraints: BoxConstraints(maxHeight: 100),
       decoration: BoxDecoration(
-        color: this.bgColor,
+        color: this.widget.bgColor,
         borderRadius: BorderRadius.all(Radius.circular(10)),
         boxShadow: [
           BoxShadow(
@@ -45,23 +55,22 @@ class SearchItemCell extends StatelessWidget {
           ),
         ],
       ),
-      padding: padding,
+      padding: widget.padding,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
          Container(
-          height: 60,
-          width: 60,
+          constraints:BoxConstraints(maxHeight: (R.appRatio.deviceWidth-40)*0.2, maxWidth: (R.appRatio.deviceWidth-40)*0.2),
           decoration: new BoxDecoration(
               shape: BoxShape.circle,
               image: new DecorationImage(
                   fit: BoxFit.fill,
-                  image: AssetImage(imageLeading)
+                  image: widget.imageLeading
               )
           )),
-          imageTrailing!=null?
+          widget.imageTrailing!=null?
           Container( 
-            width: 200,
+            width: (R.appRatio.deviceWidth-40)*0.6,
             height: 80,
             alignment: Alignment.topLeft,
             child: Column( 
@@ -69,17 +78,17 @@ class SearchItemCell extends StatelessWidget {
             children: <Widget>[
             Container( 
             alignment: Alignment.centerLeft,
-              child: Text(title, overflow: TextOverflow.ellipsis,
-               style: TextStyle(fontSize: titleSize, fontWeight: FontWeight.bold),),
+              child: Text(widget.title, overflow: TextOverflow.ellipsis,
+               style: TextStyle(fontSize: widget.titleSize, fontWeight: FontWeight.bold),),
             ),
             Container( 
             height: 40,
             alignment: Alignment.centerLeft,
-              child: description,
+              child: widget.description,
             )
           ],),
           ):Container( 
-            width: 260,
+            constraints: BoxConstraints(maxWidth: (R.appRatio.deviceWidth-40)*0.6),
             height: 80,
             alignment: Alignment.topLeft,
             child: Column( 
@@ -87,17 +96,37 @@ class SearchItemCell extends StatelessWidget {
             children: <Widget>[
             Container( 
             alignment: Alignment.centerLeft,
-              child: Text(title, overflow: TextOverflow.ellipsis,
-               style: TextStyle(fontSize: titleSize, fontWeight: FontWeight.bold),),
+              child: Text(widget.title, overflow: TextOverflow.ellipsis,
+               style: TextStyle(fontSize: widget.titleSize, fontWeight: FontWeight.bold),),
             ),
             Container( 
             height: 40,
             alignment: Alignment.centerLeft,
-              child: description,
+              child: widget.description,
             )
           ],),),
-          imageTrailing!=null? Container( 
-            child: imageTrailing,
+          tapped==false?
+          widget.imageTrailing!=null? Container( 
+            child: GestureDetector( 
+              child: widget.imageTrailing,
+              onTap: (){
+                if (widget.trailingAfterTap!=null)
+                {
+                  setState(() {
+                    tapped = !tapped;
+                  });
+                }
+              },
+            ),
+          ):Container():
+          widget.trailingAfterTap!=null? Container( 
+            width: (R.appRatio.deviceWidth-40)*0.2,
+            child: GestureDetector( 
+              child: widget.trailingAfterTap,
+              onTap: (){setState(() {
+                tapped = !tapped;
+              });},
+            ),
           ):Container()
         ],
       ),

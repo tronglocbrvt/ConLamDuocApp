@@ -326,7 +326,9 @@ class _MyIcons {
   final String appbarProfile = 'assets/icons/profile.png';
   final String appbarSearch = 'assets/icons/search.png';
   final String calendar = "assets/icons/calendar.png";
+  final String avatar = "assets/icons/icon_avatar.png";
   final String appbarCloseWhiteBold = 'assets/icons/close_whitebold.png';
+  final String add_friend = "assets/icons/add_friend.png";
 }
 
 class _Images {
@@ -345,6 +347,8 @@ class _Images {
   final String title_home = "assets/images/title_home.png";
   final String title_lesson = "assets/images/title_lesson.png";
   final String title_profile = "assets/images/title_profile.png";
+
+  final String avatar = "assets/images/avatar.png";
 
   final String whale_image = "assets/images/whale_image.png";
 }

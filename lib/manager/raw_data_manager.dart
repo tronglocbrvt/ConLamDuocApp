@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:conlamduoc/core/R.dart';
+import 'package:conlamduoc/model/challenge.dart';
 import 'package:conlamduoc/model/lesson.dart';
 import 'package:conlamduoc/model/mapper_object.dart';
 import 'package:conlamduoc/model/user.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/services.dart';
 class RawDataManager {
   static List<User> userList = List<User>();
   static List<Lesson> lessonList = List<Lesson>();
+  static List<Challenge> challengeList = List<Challenge>();
 
   static void initRawData() async {
     //init users
@@ -50,6 +52,22 @@ class RawDataManager {
         lessonList = list;
       } else {
         lessonList.add(_parse<Lesson>(data));
+      }
+    }
+
+    //Init Challenges
+    jsonContent = await rootBundle.loadString("assets/data/challenge/challengeList.json");
+    body = json.decode(jsonContent);
+    data = body['data']; // data just can be List or Map type.
+    if (data != null) {
+      if (data is List) {
+        List<Challenge> list = [];
+        data.forEach((obj) {
+          list.add(_parse<Challenge>(obj));
+        });
+        challengeList = list;
+      } else {
+        challengeList.add(_parse<Challenge>(data));
       }
     }
   }

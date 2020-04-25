@@ -1,10 +1,12 @@
 import 'dart:convert';
 
 import 'package:conlamduoc/manager/raw_data_manager.dart';
+import 'package:conlamduoc/model/challenge.dart';
 import 'package:conlamduoc/model/lesson.dart';
 import 'package:conlamduoc/model/user.dart';
 import 'package:conlamduoc/widget/search_item_cell.dart';
 import 'package:conlamduoc/widgets/main_lesson.dart';
+import 'package:conlamduoc/widget/main_challenge.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -24,6 +26,7 @@ class _SearchPageState extends State<SearchPage> {
 
   bool _isLoading;
   List<User> userList;
+  List<Challenge> challengeList;
   List<Lesson> lessonList;
 
   void _getNotificationList() {
@@ -41,6 +44,7 @@ class _SearchPageState extends State<SearchPage> {
 
     lessonList.addAll(RawDataManager.lessonList);
     userList.addAll(RawDataManager.userList);
+    challengeList.addAll(RawDataManager.challengeList);
   }
   
  
@@ -106,7 +110,8 @@ class _SearchPageState extends State<SearchPage> {
         itemBuilder: (BuildContext ctxt, int index) {
           User element = userList[index];
           String name = element.name;
-          String age = element.birthday.year.toString();
+          String age = (DateTime.now().year - element.birthday.year).toString();
+          String img = element.img!=null? element.img : R.myIcons.avatar;
           return Container(
             margin: EdgeInsets.only(
               top: 15,
@@ -116,10 +121,48 @@ class _SearchPageState extends State<SearchPage> {
             ),
             child: SearchItemCell(
                 onTap: null,
-                imageLeading: R.myIcons.appbarGame, 
+                imageLeading: AssetImage(img), 
                 title: name,
-                description: Text("Năm sinh: " + age),
-                imageTrailing: Icon(Icons.group_add,size: 40,),
+                description: Text(age + " tuổi"),
+                imageTrailing: Icon(Icons.group_add, size: 30),
+                trailingAfterTap: Icon(Icons.remove_circle_outline, size: 30,),
+                ));
+          
+        },
+      ),
+    );
+  }
+
+  _buildChallengelist()
+  {
+    return Container(
+      margin: EdgeInsets.only(
+        left: 10,
+        right: 10,
+        bottom: 40
+      ),
+      child: ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: challengeList.length,
+        itemBuilder: (BuildContext ctxt, int index) {
+          Challenge element = challengeList[index];
+          String name = element.nameChallenge;
+          String description = element.describe;
+          String img = element.img!=null? element.img: R.myIcons.appbarChallenge;
+          int coin = element.coins;
+          return Container(
+            margin: EdgeInsets.only(
+              top: 15,
+              bottom: (index == challengeList.length - 1
+                  ? 15
+                  : 0),
+            ),
+            child: MainChallenge(
+                id: element.id,
+                coins: coin,
+                content: description,
+                title: name,
+                thumbnailImageUrl: img,
                 ));
           
         },
@@ -136,6 +179,7 @@ class _SearchPageState extends State<SearchPage> {
      _isLoading = true;
     lessonList = List<Lesson>();
     userList = List<User>();
+    challengeList = List<Challenge>();
     WidgetsBinding.instance.addPostFrameCallback((_) => _getNotificationList());
   }
 
@@ -148,6 +192,7 @@ class _SearchPageState extends State<SearchPage> {
   void _onChangedSearchBox(data) {
     
     print(tiengviet(data));
+    this.challengeList.clear();
     this.lessonList.clear();
     this.userList.clear();
     if (data == "")
@@ -155,23 +200,31 @@ class _SearchPageState extends State<SearchPage> {
       setState(() {
         this.userList.addAll(RawDataManager.userList);
         this.lessonList.addAll(RawDataManager.lessonList);
+        this.challengeList.addAll(RawDataManager.challengeList);
       });
     }
     else{
     List<User> tempUser = new List<User>();
     List<Lesson> tempLesson = new List<Lesson>();
+    List<Challenge> tempChallenge = new List<Challenge>();
     RawDataManager.lessonList.forEach((lesson){
       if (tiengviet(lesson.nameLesson).toLowerCase().contains(tiengviet(data).toString().toLowerCase()))
         tempLesson.add(lesson);
     });
 
-      RawDataManager.userList.forEach((user){
-        if (tiengviet(user.name).toLowerCase().contains(tiengviet(data).toString().toLowerCase()))
-          tempUser.add(user);
-      });
+    RawDataManager.userList.forEach((user){
+      if (tiengviet(user.name).toLowerCase().contains(tiengviet(data).toString().toLowerCase()))
+        tempUser.add(user);
+    });
+
+    RawDataManager.challengeList.forEach((chal){
+      if (tiengviet(chal.nameChallenge).toLowerCase().contains(tiengviet(data).toString().toLowerCase()))
+        tempChallenge.add(chal);
+    });
       setState(() {
         this.userList.addAll(tempUser);
         this.lessonList.addAll(tempLesson);
+        this.challengeList.addAll(tempChallenge);
       });
     }
     
@@ -323,7 +376,7 @@ class _SearchPageState extends State<SearchPage> {
         length: _tabBarLength,
         child: Scaffold(
           resizeToAvoidBottomInset: false,
-          backgroundColor: Colors.white,
+          backgroundColor: R.colors.lightGreenColor,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(_preferredHeightSize),
             // here the desired height
@@ -340,7 +393,7 @@ class _SearchPageState extends State<SearchPage> {
           body: TabBarView(
             children: [           
               Center(child: _buildUserlist()),
-              Center(child: Text("Listview of CHALLENGES")),
+              Center(child: _buildChallengelist()),
               Center(child: _buildLessonList()),
             ],
           ),

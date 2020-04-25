@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:conlamduoc/core/R.dart';
+import 'package:conlamduoc/model/feed.dart';
 import 'package:conlamduoc/model/lesson.dart';
 import 'package:conlamduoc/model/mapper_object.dart';
 import 'package:conlamduoc/model/user.dart';
@@ -10,17 +11,15 @@ import 'package:flutter/services.dart';
 class RawDataManager {
   static List<User> userList = List<User>();
   static List<Lesson> lessonList = List<Lesson>();
+  static List<Feed> feedList = List<Feed>();
 
   static void initRawData() async {
-    //init users
-    // String jsonContent = await rootBundle.loadString("assets/data/users/user1.json");
-    // User user = MapperObject.create<User>(jsonContent);
-    // userList.add(user);
+    _initUsers();
+    _initLessons();
+    _initFeeds();
+  }
 
-    // jsonContent = await rootBundle.loadString("assets/data/users/user2.json");
-    // user = MapperObject.create<User>(jsonContent);
-    // userList.add(user);
-
+  static void _initUsers() async {
     String jsonContent =
         await rootBundle.loadString("assets/data/users/userList.json");
     Map<String, dynamic> body = json.decode(jsonContent);
@@ -36,11 +35,13 @@ class RawDataManager {
         userList.add(_parse<User>(data));
       }
     }
+  }
 
-    // Init lessons
-    jsonContent = await rootBundle.loadString("assets/data/lessons/lessonList.json");
-    body = json.decode(jsonContent);
-    data = body['data']; // data just can be List or Map type.
+  static void _initLessons() async {
+    String jsonContent =
+        await rootBundle.loadString("assets/data/lessons/lessonList.json");
+    Map<String, dynamic> body = json.decode(jsonContent);
+    dynamic data = body['data']; // data just can be List or Map type.
     if (data != null) {
       if (data is List) {
         List<Lesson> list = [];
@@ -50,6 +51,24 @@ class RawDataManager {
         lessonList = list;
       } else {
         lessonList.add(_parse<Lesson>(data));
+      }
+    }
+  }
+
+  static void _initFeeds() async {
+    String jsonContent =
+        await rootBundle.loadString("assets/data/feeds/feedList.json");
+    Map<String, dynamic> body = json.decode(jsonContent);
+    dynamic data = body['data']; // data just can be List or Map type.
+    if (data != null) {
+      if (data is List) {
+        List<Feed> list = [];
+        data.forEach((obj) {
+          list.add(_parse<Feed>(obj));
+        });
+        feedList = list;
+      } else {
+        feedList.add(_parse<Feed>(data));
       }
     }
   }

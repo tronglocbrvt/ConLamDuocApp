@@ -1,6 +1,6 @@
 import 'package:conlamduoc/core/helper.dart';
-import 'package:conlamduoc/page/app/app_page.dart';
 import 'package:conlamduoc/page/welcome/welcome_page.dart';
+import 'package:conlamduoc/widget/custom_dialog.dart/custom_alert_dialog.dart';
 import 'package:flutter/material.dart';
 
 import 'main.reflectable.dart';
@@ -40,7 +40,7 @@ class _ConLamDuocAppState extends State<ConLamDuocApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Con làm được',
+      title: 'Con làm được!',
       key: key,
       theme: ThemeData(
         primaryColor: Color(0xFFC6FF59),
@@ -61,9 +61,13 @@ class _SplashPageState extends State<StatefulWidget> {
     _initApp();
     return Scaffold(
       body: Center(
-        child: Image.asset(
-          R.images.logo,
-          width: 200,
+        child: AnimatedOpacity(
+          opacity: 1.0,
+          duration: Duration(milliseconds: 1500),
+          child: Image.asset(
+            R.images.logo,
+            width: 200,
+          ),
         ),
       ),
     );

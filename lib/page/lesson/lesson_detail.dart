@@ -1,7 +1,8 @@
 import 'package:conlamduoc/core/R.dart';
 import 'package:conlamduoc/core/helper.dart';
-import 'package:conlamduoc/widgets/custom_videoplayer.dart';
-import 'package:conlamduoc/widgets/ui_button.dart';
+import 'package:conlamduoc/widget/custom_dialog.dart/custom_alert_dialog.dart';
+import 'package:conlamduoc/widget/custom_videoplayer.dart';
+import 'package:conlamduoc/widget/ui_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +39,7 @@ class _LessonDetailState extends State<LessonDetail> {
 
   static final AppBar customAppBar = AppBar(
     centerTitle: true,
-    backgroundColor: R.colors.greenColor,
+    backgroundColor: R.colors.green,
     automaticallyImplyLeading: false,
     leading: IconButton(
       icon: Icon(Icons.arrow_back, color: R.colors.strongBlue),
@@ -143,6 +144,7 @@ class _LessonDetailState extends State<LessonDetail> {
                 appBar: customAppBar,
                 key: _cvps,
                 callBackVideoFinished: () => _canReceiveCoins(),
+                autoPlay: true,
               ),
               SizedBox(
                 height: 15,
@@ -177,11 +179,12 @@ class _LessonDetailState extends State<LessonDetail> {
                 enable: _enableReceiveCoinsBtn,
                 fontWeight: FontWeight.bold,
                 onTap: () async {
-                  await showAlert(
+                  await showCustomAlertDialog(
                     context,
-                    R.strings.content,
-                    R.strings.receiveCoinsSuccessfully,
-                    null,
+                    title: R.strings.content,
+                    content: R.strings.receiveCoinsSuccessfully,
+                    firstButtonText: R.strings.ok,
+                    firstButtonFunction: () => pop(context),
                   );
 
                   Future.delayed(

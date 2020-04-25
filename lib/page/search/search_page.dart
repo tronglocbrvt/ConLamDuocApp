@@ -170,7 +170,7 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   void _requireSearchBoxFocus() {
-    Future.delayed(Duration(milliseconds: 500), () {
+    Future.delayed(Duration(milliseconds: 800), () {
       _searchFocusNode.requestFocus();
     });
   }
@@ -211,7 +211,7 @@ class _SearchPageState extends State<SearchPage> {
                 ),
                 onSubmitted: (data) => _onSubmittedSearchBox(data),
                 onChanged: (data) => _onChangedSearchBox(data),
-                cursorColor: R.colors.greenColor,
+                cursorColor: R.colors.green,
                 decoration: InputDecoration(
                   isDense: true,
                   enabledBorder: InputBorder.none,
@@ -234,7 +234,7 @@ class _SearchPageState extends State<SearchPage> {
               margin: EdgeInsets.only(left: 15, right: 15),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: R.colors.greenColor,
+                color: R.colors.green,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
               child: Image.asset(
@@ -255,12 +255,14 @@ class _SearchPageState extends State<SearchPage> {
       Tab(
         child: Padding(
           padding: EdgeInsets.only(top: 8),
-          child: Text(
-            R.strings.friend.toUpperCase(),
-            style: TextStyle(
-              color: R.colors.strongBlue,
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
+          child: FittedBox(
+            child: Text(
+              R.strings.friend.toUpperCase(),
+              style: TextStyle(
+                color: R.colors.strongBlue,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
@@ -269,12 +271,14 @@ class _SearchPageState extends State<SearchPage> {
       Tab(
         child: Padding(
           padding: EdgeInsets.only(top: 8),
-          child: Text(
-            R.strings.challenge.toUpperCase(),
-            style: TextStyle(
-              color: R.colors.strongBlue,
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
+          child: FittedBox(
+            child: Text(
+              R.strings.challenge.toUpperCase(),
+              style: TextStyle(
+                color: R.colors.strongBlue,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
@@ -283,12 +287,14 @@ class _SearchPageState extends State<SearchPage> {
       Tab(
         child: Padding(
           padding: EdgeInsets.only(top: 8),
-          child: Text(
-            R.strings.lesson.toUpperCase(),
-            style: TextStyle(
-              color: R.colors.strongBlue,
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
+          child: FittedBox(
+            child: Text(
+              R.strings.lesson.toUpperCase(),
+              style: TextStyle(
+                color: R.colors.strongBlue,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
@@ -310,7 +316,7 @@ class _SearchPageState extends State<SearchPage> {
             preferredSize: Size.fromHeight(_preferredHeightSize),
             // here the desired height
             child: AppBar(
-              backgroundColor: R.colors.greenColor,
+              backgroundColor: R.colors.green,
               flexibleSpace: _buildAppBarSearchBox(),
               bottom: TabBar(
                 indicatorColor: R.colors.strongBlue,

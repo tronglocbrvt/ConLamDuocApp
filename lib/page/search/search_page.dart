@@ -1,135 +1,15 @@
+import 'dart:convert';
+
+import 'package:conlamduoc/manager/raw_data_manager.dart';
+import 'package:conlamduoc/model/lesson.dart';
+import 'package:conlamduoc/model/user.dart';
+import 'package:conlamduoc/widget/search_item_cell.dart';
+import 'package:conlamduoc/widgets/main_lesson.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:conlamduoc/core/R.dart';
-
-//  final TextEditingController _searchController = TextEditingController();
-//  @override
-//  Widget build(BuildContext context){
-//    List<Widget> listFriends = [
-//          SizedBox(height: 20,),
-//          Container(
-//            width: R.appRatio.deviceWidth,
-//            child: Text("Bạn bè", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-//          ),
-//          SearchItemCell(
-//            imageLeading: R.myIcons.appbarGame,
-//            title: RawDataManager.userList[0].name,
-//            description: Text("10 tuổi"),
-//            imageTrailing: R.myIcons.appbarChallenge,),
-//           SearchItemCell(
-//            imageLeading: R.myIcons.appbarGame,
-//            title: RawDataManager.userList[1].name,
-//            description: Text("9 tuổi"),
-//            imageTrailing: R.myIcons.appbarChallenge,),
-//          SizedBox(height: 10,),
-//          Container(
-//            alignment: Alignment.centerRight,
-//            width: R.appRatio.deviceWidth,
-//            child: GestureDetector(
-//              child: Text("Xem tất cả", style: TextStyle(color: Colors.lightBlue),),
-//            ),
-//          ),];
-//
-//    List<Widget> listChallenge = [
-//          SizedBox(height: 20,),
-//          Container(
-//            width: R.appRatio.deviceWidth,
-//            child: Text("Thử thách", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-//          ),
-//          SearchItemCell(
-//            imageLeading: R.myIcons.appbarGame,
-//            title: "Rửa tay 6 bước",
-//            description: Text("10 xu"),
-//            imageTrailing: R.myIcons.appbarChallenge,),
-//           SearchItemCell(
-//            imageLeading: R.myIcons.appbarGame,
-//            title: "Vẽ tranh gia đình",
-//            description: Text("10 xu"),
-//            imageTrailing: R.myIcons.appbarChallenge,),
-//          SizedBox(height: 10,),
-//          Container(
-//            alignment: Alignment.centerRight,
-//            width: R.appRatio.deviceWidth,
-//            child: GestureDetector(
-//              onTap: ()=>pushPage(context, ChallengePage()),
-//              child: Text("Xem tất cả", style: TextStyle(color: Colors.lightBlue),),
-//            ),
-//          ),];
-//
-//
-//    List<Widget> listLesson = [
-//          SizedBox(height: 20,),
-//          Container(
-//            width: R.appRatio.deviceWidth,
-//            child: Text("Bài học", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-//          ),
-//          SearchItemCell(
-//            imageLeading: R.myIcons.appbarGame,
-//            title: "Cá voi có tuổi thọ bao lâu",
-//            titleSize: 14,
-//            description: Text("10 xu")),
-//           SearchItemCell(
-//            imageLeading: R.myIcons.appbarGame,
-//            title: "Khả năng không tưởng của một chiếc bút chì",
-//            titleSize: 14,
-//            description: Text("10 xu"),),
-//          SizedBox(height: 10,),
-//          Container(
-//            alignment: Alignment.centerRight,
-//            width: R.appRatio.deviceWidth,
-//            child: GestureDetector(
-//              onTap: ()=>pushPage(context, LessonPage()),
-//              child: Text("Xem tất cả", style: TextStyle(color: Colors.lightBlue),),
-//            ),
-//          ),];
-//
-//  List<Widget> list = [];
-//
-//    list.addAll(listFriends);
-//    list.addAll(listChallenge);
-//    list.addAll(listLesson);
-//    return Scaffold(
-//      resizeToAvoidBottomInset: false,
-//      resizeToAvoidBottomPadding: false,
-//      appBar: CupertinoNavigationBar(
-//        backgroundColor: R.colors.navigationBar,
-//        leading: Image.asset(R.images.logo, width: R.appRatio.appWidth70,),
-//        middle: Container(
-//          padding: EdgeInsets.only(left: 5, right: 5, bottom: 5),
-//          child: TextField(
-//            controller: _searchController,
-//            decoration: new InputDecoration(
-//            contentPadding: EdgeInsets.only(left: R.appRatio.appSpacing25),
-//            border: new OutlineInputBorder(
-//              borderRadius: const BorderRadius.all(
-//                const Radius.circular(50.0),
-//              ),
-//            ),
-//            filled: true,
-//            hintText: "Bạn cần tìm gì ...",
-//            hintStyle: new TextStyle(fontSize: 13, color: Colors.grey[800]),
-//            fillColor: Colors.white),
-//          ),
-//        ),
-//        trailing: GestureDetector(
-//          onTap: ()=>{},
-//          child: Image.asset(R.myIcons.appbarSearch, height: R.appRatio.appSpacing30,),
-//        ),
-//      ),
-//      backgroundColor: R.colors.appBackground,
-//      body: SafeArea(
-//        child: Padding(
-//          padding: EdgeInsets.only(left:20, right: 20),
-//          child: SingleChildScrollView(
-//            child: Column(
-//            mainAxisAlignment: MainAxisAlignment.start,
-//            children: list,
-//        ),
-//          )
-//      ),
-//    ));
-//  }
+import 'package:tiengviet/tiengviet.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -142,12 +22,85 @@ class _SearchPageState extends State<SearchPage> {
   final double _preferredHeightSize = 110.0;
   final int _tabBarLength = 3;
 
+  bool _isLoading;
+  List<User> userList;
+  List<Lesson> lessonList;
+
+  void _getNotificationList() {
+    if (!_isLoading) {
+      setState(() {
+        _isLoading = true;
+      });
+    }
+
+    Future.delayed(Duration(milliseconds: 1000), () {
+      setState(() {
+        _isLoading = !_isLoading;
+      });
+    });
+
+    lessonList.addAll(RawDataManager.lessonList);
+  }
+  
+  _buildUserlist()
+  {
+    
+  }
+
+  _buildLessonList()
+  {
+    return Container(
+      margin: EdgeInsets.only(
+        left: 10,
+        right: 10,
+        bottom: 40
+      ),
+      child: ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: lessonList.length,
+        itemBuilder: (BuildContext ctxt, int index) {
+          Lesson element = lessonList[index];
+          int id = element.id;
+          String title = element.nameLesson;
+          String content = element.content;
+          int coins = element.coins;
+          String lessonField = element.lessonField;
+          String thumbnailImageUrl = element.thumbnailImageUrl;
+          String webUrl = element.webUrl;
+
+          return Container(
+            margin: EdgeInsets.only(
+              top: 15,
+              bottom: (index == lessonList.length - 1
+                  ? 15
+                  : 0),
+            ),
+            child: MainLesson(
+              id: id,
+              content: content,
+              thumbnailImageUrl: thumbnailImageUrl,
+              title: title,
+              coins: coins,
+              lessonField: lessonField,
+              webUrl: webUrl,
+            ),
+          );
+        },
+      ),
+    );
+
+  }
+
   @override
   void initState() {
     super.initState();
     _textSearchController = TextEditingController();
     _searchFocusNode = FocusNode();
     _requireSearchBoxFocus();
+     _isLoading = true;
+    lessonList = List();
+    userList = List();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _getNotificationList());
   }
 
   @override
@@ -157,7 +110,26 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   void _onChangedSearchBox(data) {
-    // TODO: Implement here
+    
+    print(tiengviet(data));
+    this.lessonList.clear();
+    if (data=="")
+    {
+      setState(() {
+        this.lessonList.addAll(RawDataManager.lessonList);
+      });
+    }
+    else{
+    List<Lesson> temp = new List<Lesson>();
+    RawDataManager.lessonList.forEach((lesson){
+      if (tiengviet(lesson.nameLesson).toLowerCase().contains(tiengviet(data).toString().toLowerCase()))
+        temp.add(lesson);
+    });
+    setState(() {
+      this.lessonList.addAll(temp);
+    });
+    }
+    
   }
 
   void _onSubmittedSearchBox(data) {
@@ -305,6 +277,7 @@ class _SearchPageState extends State<SearchPage> {
       home: DefaultTabController(
         length: _tabBarLength,
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           backgroundColor: Colors.white,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(_preferredHeightSize),
@@ -322,9 +295,16 @@ class _SearchPageState extends State<SearchPage> {
           body: TabBarView(
             children: [
               // TODO: Display listview of ALL routes and FAVORITE routes
-              Center(child: Text("Listview of FRIENDS")),
+              
+              Center(
+              child: 
+              SearchItemCell(
+                onTap: null,
+                imageLeading: R.myIcons.appbarGame, 
+                title: "AAAA",
+                description: Text("AAA"),)),
               Center(child: Text("Listview of CHALLENGES")),
-              Center(child: Text("Listview of LESSONS")),
+              Center(child: _buildLessonList()),
             ],
           ),
         ),

@@ -53,7 +53,9 @@ class _SignUpPageState extends State<SignUpPage> {
               child: Container(      
               height: 340,
               margin: EdgeInsets.only(),
-              child: SingleChildScrollView(
+              child: ScrollConfiguration( 
+                behavior: MyBehavior(),
+                child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
                   //SizedBox(height: R.appRatio.appWidth300 - R.appRatio.appSpacing20),
@@ -298,8 +300,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   )
 
                 ]
-              ),
+              )
             ),
+              )
             ),
             ),
              
@@ -327,4 +330,13 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
  
+}
+
+
+class MyBehavior extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
+  }
 }

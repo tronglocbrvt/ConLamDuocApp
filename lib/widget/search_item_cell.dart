@@ -11,25 +11,41 @@ class SearchItemCell extends StatelessWidget {
   final String title;
   final double  titleSize;
   final Widget description;
+  final GestureTapCallback onTap;
 
   SearchItemCell({
    @required this.imageLeading,
     @required this.title,
     @required this.description,
+    @required this.onTap,
     this.titleSize = 17,
     this.imageTrailing,
-    this.padding = const EdgeInsets.only(left: 20, right: 20, top: 6, bottom: 6),
+    this.padding = const EdgeInsets.all(10),
     dynamic trailing,
-    this.bgColor = Colors.transparent,
+    this.bgColor = Colors.white,
   });
 
   @override
   Widget build(BuildContext context) {
     print(this.titleSize);
-    return Container(
-      height: 80,
+    return GestureDetector( 
+      onTap: this.onTap,
+      child: Container(
+      height: 90,
+      width: R.appRatio.deviceWidth - 40,
+      constraints: BoxConstraints(maxHeight: 100),
+      decoration: BoxDecoration(
+        color: this.bgColor,
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 2.0,
+            offset: Offset(1.0, 1.0),
+            color: Color.fromRGBO(0, 0, 0, 0.25),
+          ),
+        ],
+      ),
       padding: padding,
-      color: this.bgColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -87,6 +103,7 @@ class SearchItemCell extends StatelessWidget {
           ):Container()
         ],
       ),
+    ),
     );
   }
 }

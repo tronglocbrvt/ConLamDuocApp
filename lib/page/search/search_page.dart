@@ -140,7 +140,7 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   static TextEditingController _textSearchController;
   static FocusNode _searchFocusNode;
-  final double _preferredHeightSize = 145.0;
+  final double _preferredHeightSize = 120.0;
   final int _tabBarLength = 3;
 
   @override
@@ -185,7 +185,7 @@ class _SearchPageState extends State<SearchPage> {
 
   Widget _buildAppBarSearchBox() {
     return Container(
-      margin: EdgeInsets.fromLTRB(20, 75, 20, 0),
+      margin: EdgeInsets.fromLTRB(20, 40, 20, 0),
       width: R.appRatio.deviceWidth,
       height: 40,
       decoration: BoxDecoration(
@@ -246,40 +246,6 @@ class _SearchPageState extends State<SearchPage> {
             ),
           )
         ],
-      ),
-    );
-  }
-
-  Widget _buildAppBarLeading() {
-    return GestureDetector(
-      child: Container(
-        alignment: Alignment.center,
-        margin: EdgeInsets.only(left: 10),
-        child: Image.asset(
-          R.images.logo,
-          width: R.appRatio.appWidth70,
-        ),
-      ),
-      onTap: () {
-        _clearSearchBoxFocus();
-        Future.delayed(Duration(milliseconds: 300), () {
-          pop(context);
-        });
-      },
-    );
-  }
-
-  Widget _buildAppBarTitle() {
-    return Container(
-      margin: EdgeInsets.only(left: 10),
-      child: Text(
-        R.strings.search,
-        textScaleFactor: 1.0,
-        style: TextStyle(
-          color: R.colors.strongBlue,
-          fontWeight: FontWeight.bold,
-          fontSize: 16,
-        ),
       ),
     );
   }
@@ -346,9 +312,6 @@ class _SearchPageState extends State<SearchPage> {
             // here the desired height
             child: AppBar(
               backgroundColor: R.colors.greenColor,
-              leading: _buildAppBarLeading(),
-              titleSpacing: 0.0,
-              title: _buildAppBarTitle(),
               flexibleSpace: _buildAppBarSearchBox(),
               bottom: TabBar(
                 indicatorColor: R.colors.strongBlue,

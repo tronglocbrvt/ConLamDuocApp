@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:conlamduoc/core/R.dart';
-import 'package:conlamduoc/core/helper.dart';
 
 //  final TextEditingController _searchController = TextEditingController();
 //  @override
@@ -140,7 +139,7 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   static TextEditingController _textSearchController;
   static FocusNode _searchFocusNode;
-  final double _preferredHeightSize = 120.0;
+  final double _preferredHeightSize = 110.0;
   final int _tabBarLength = 3;
 
   @override
@@ -176,12 +175,12 @@ class _SearchPageState extends State<SearchPage> {
     });
   }
 
-  void _clearSearchBoxFocus() {
-    FocusScopeNode currentFocus = FocusScope.of(context);
-    if (!currentFocus.hasPrimaryFocus) {
-      currentFocus.unfocus();
-    }
-  }
+//  void _clearSearchBoxFocus() {
+//    FocusScopeNode currentFocus = FocusScope.of(context);
+//    if (!currentFocus.hasPrimaryFocus) {
+//      currentFocus.unfocus();
+//    }
+//  }
 
   Widget _buildAppBarSearchBox() {
     return Container(

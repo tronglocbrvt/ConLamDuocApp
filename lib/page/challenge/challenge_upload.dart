@@ -221,7 +221,7 @@ class _ChallengeUploadState extends State<ChallengeUpload> {
   Widget build(BuildContext context) {
     Widget _buildWidget = Scaffold(
       appBar: CupertinoNavigationBar(
-        backgroundColor: R.colors.navigationBar,
+        backgroundColor: R.colors.appBackground,
         leading: Image.asset(
           R.images.logo,
           width: R.appRatio.appWidth70,
@@ -291,7 +291,7 @@ class _ChallengeUploadState extends State<ChallengeUpload> {
         Padding(
           padding: EdgeInsets.only(left: 20, right: 20),
             child: TextField(
-              maxLines: 3,
+              maxLines: 2,
             //controller: _passwordController,
             decoration: new InputDecoration(
                 contentPadding: EdgeInsets.all(20),
@@ -309,7 +309,9 @@ class _ChallengeUploadState extends State<ChallengeUpload> {
         SizedBox(
           height: 25,
         ),
-        FlatButton(
+        Padding( 
+          padding: EdgeInsets.only(left: 100, right: 100),
+          child: FlatButton(
           onPressed: (){},
           color: Color(0xFFFFC300),
           shape: RoundedRectangleBorder(
@@ -319,7 +321,11 @@ class _ChallengeUploadState extends State<ChallengeUpload> {
             child: Text("Xác nhận", style: TextStyle(fontSize: 20),),
             padding: EdgeInsets.only(top:10,bottom:10),
           ),
-        )
+        ),
+        ),
+        SizedBox(
+          height: 15,
+        ),
       ],
     ))
     );

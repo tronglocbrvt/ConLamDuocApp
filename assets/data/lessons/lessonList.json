@@ -3,10 +3,10 @@
     {
       "id": 1,
       "nameLesson": "Khả năng không tưởng của một chiếc bút chì",
-      "content": "Bạn bút chì nhỏ nhắn của chúng ta tuy nhỏ bé nhưng lại rất thần kỳ! Hãy vào học để có thể hiểu thêm về bạn bút chì, bạn nhé!",
+      "content": "Bạn bút chì nhỏ nhắn của chúng ta tuy nhỏ bé nhưng lại rất thần kỳ! Hãy vào học để có thể hiểu thêm về bạn bút chì, em nhé!",
       "coins": 10,
       "isActive": true,
-      "lessonField": "Bạn có biết?",
+      "lessonField": "Em có biết?",
       "thumbnailImageUrl": "assets/images/whale_image.png",
       "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
       "createdAt": "1587719246000"
@@ -25,7 +25,7 @@
     {
       "id": 3,
       "nameLesson": "Khả năng không tưởng của một chiếc bút chì",
-      "content": "Bạn bút chì nhỏ nhắn của chúng ta tuy nhỏ bé nhưng lại rất thần kỳ! Hãy vào học để có thể hiểu thêm về bạn bút chì, bạn nhé!",
+      "content": "Bạn bút chì nhỏ nhắn của chúng ta tuy nhỏ bé nhưng lại rất thần kỳ! Hãy vào học để có thể hiểu thêm về bạn bút chì, em nhé!",
       "coins": 30,
       "isActive": true,
       "lessonField": "Kỹ năng",
@@ -36,10 +36,10 @@
     {
       "id": 4,
       "nameLesson": "Khả năng không tưởng của một chiếc bút chì",
-      "content": "Bạn bút chì nhỏ nhắn của chúng ta tuy nhỏ bé nhưng lại rất thần kỳ! Hãy vào học để có thể hiểu thêm về bạn bút chì, bạn nhé!",
+      "content": "Bạn bút chì nhỏ nhắn của chúng ta tuy nhỏ bé nhưng lại rất thần kỳ! Hãy vào học để có thể hiểu thêm về bạn bút chì, em nhé!",
       "coins": 20,
       "isActive": true,
-      "lessonField": "Bạn có biết?",
+      "lessonField": "Em có biết?",
       "thumbnailImageUrl": "assets/images/whale_image.png",
       "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
       "createdAt": "1587719246000"
@@ -47,10 +47,10 @@
     {
       "id": 5,
       "nameLesson": "Khả năng không tưởng của một chiếc bút chì",
-      "content": "Bạn bút chì nhỏ nhắn của chúng ta tuy nhỏ bé nhưng lại rất thần kỳ! Hãy vào học để có thể hiểu thêm về bạn bút chì, bạn nhé!",
+      "content": "Bạn bút chì nhỏ nhắn của chúng ta tuy nhỏ bé nhưng lại rất thần kỳ! Hãy vào học để có thể hiểu thêm về bạn bút chì, em nhé!",
       "coins": 15,
       "isActive": true,
-      "lessonField": "Bạn có biết?",
+      "lessonField": "Em có biết?",
       "thumbnailImageUrl": "assets/images/whale_image.png",
       "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
       "createdAt": "1587719246000"
@@ -58,10 +58,10 @@
     {
       "id": 6,
       "nameLesson": "Khả năng không tưởng của một chiếc bút chì",
-      "content": "Bạn bút chì nhỏ nhắn của chúng ta tuy nhỏ bé nhưng lại rất thần kỳ! Hãy vào học để có thể hiểu thêm về bạn bút chì, bạn nhé!",
+      "content": "Bạn bút chì nhỏ nhắn của chúng ta tuy nhỏ bé nhưng lại rất thần kỳ! Hãy vào học để có thể hiểu thêm về bạn bút chì, em nhé!",
       "coins": 30,
       "isActive": true,
-      "lessonField": "Bạn có biết?",
+      "lessonField": "Em có biết?",
       "thumbnailImageUrl": "assets/images/whale_image.png",
       "videoUrl": "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4",
       "createdAt": "1587719246000"

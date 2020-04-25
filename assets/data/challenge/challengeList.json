@@ -1,29 +1,26 @@
 {
-    
-    "data":[
-    
-        {
-            "id": 1,
-            "nameChallenge": "Rửa tay 6 bước",
-            "describe": "Bạn hãy quay video rửa tay theo các bước hướng dẫn. Mỗi bước thực hiện ít nhất 5 lần để đảm bảo giữ bàn tay luôn sạch nhé!",
-            "img": null,
-            "coins": 20,
-            "isActive": true,
-            "field": "Phòng chống dịch COVID19",
-            "createdAt": "1587719246000",
-            "endTime": "1588324046000"
-        },
-        {
-            "id": 2,
-            "nameChallenge": "Vẽ tranh gia đình",
-            "describe": "Bạn hãy quay video rửa tay theo các bước hướng dẫn. Mỗi bước thực hiện ít nhất 5 lần để đảm bảo giữ bàn tay luôn sạch nhé!",
-            "img": null,
-            "coins": 20,
-            "isActive": true,
-            "field": "Phòng chống dịch COVID19",
-            "createdAt": "1587719246000",
-            "endTime": "1588324046000"
-        }
-        
-    ]
+  "data": [
+    {
+      "id": 1,
+      "nameChallenge": "Rửa tay 6 bước",
+      "describe": "Em hãy quay video rửa tay theo các bước hướng dẫn. Mỗi bước thực hiện ít nhất 5 lần để đảm bảo giữ bàn tay luôn sạch nhé!",
+      "img": null,
+      "coins": 20,
+      "isActive": true,
+      "field": "Phòng chống dịch COVID19",
+      "createdAt": "1587719246000",
+      "endTime": "1588324046000"
+    },
+    {
+      "id": 2,
+      "nameChallenge": "Vẽ tranh gia đình",
+      "describe": "Em hãy quay video rửa tay theo các bước hướng dẫn. Mỗi bước thực hiện ít nhất 5 lần để đảm bảo giữ bàn tay luôn sạch nhé!",
+      "img": null,
+      "coins": 20,
+      "isActive": true,
+      "field": "Phòng chống dịch COVID19",
+      "createdAt": "1587719246000",
+      "endTime": "1588324046000"
+    }
+  ]
 }

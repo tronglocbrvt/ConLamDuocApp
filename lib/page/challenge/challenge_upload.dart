@@ -221,7 +221,7 @@ class _ChallengeUploadState extends State<ChallengeUpload> {
   Widget build(BuildContext context) {
     Widget _buildWidget = Scaffold(
       appBar: CupertinoNavigationBar(
-        backgroundColor: R.colors.appBackground,
+        backgroundColor: R.colors.appBarBackground,
         leading: Image.asset(
           R.images.logo,
           width: R.appRatio.appWidth70,
@@ -264,7 +264,7 @@ class _ChallengeUploadState extends State<ChallengeUpload> {
       children: [
         CustomCell(
           avatarView: AvatarView(
-            avatarImageURL: widget.avatarUrl,
+            avatarImageURL: widget.avatarUrl!=null?widget.avatarUrl:R.myIcons.avatar,
             avatarImageSize: 60,
             avatarBoxBorder: Border.all(
               width: 2,

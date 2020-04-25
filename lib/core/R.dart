@@ -349,6 +349,7 @@ class _Images {
   final String title_profile = "assets/images/title_profile.png";
 
   final String avatar = "assets/images/avatar.png";
+  final String challenge1 = "assets/images/challenge1.png";
 
   final String whale_image = "assets/images/whale_image.png";
 }

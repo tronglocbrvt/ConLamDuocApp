@@ -141,7 +141,7 @@ class _SearchPageState extends State<SearchPage> {
   static TextEditingController _textSearchController;
   static FocusNode _searchFocusNode;
   final double _preferredHeightSize = 145.0;
-  final int _tabBarLength = 2;
+  final int _tabBarLength = 3;
 
   @override
   void initState() {
@@ -217,7 +217,7 @@ class _SearchPageState extends State<SearchPage> {
                   isDense: true,
                   enabledBorder: InputBorder.none,
                   focusedBorder: InputBorder.none,
-                  hintText: R.strings.hintFriendName,
+                  hintText: R.strings.searchHint,
                   hintStyle: TextStyle(
                     fontSize: 14,
                     color: Color.fromRGBO(0, 0, 0, 0.25),

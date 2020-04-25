@@ -362,7 +362,7 @@ class Strings {
   String game;
   String profile;
   String search;
-  String hintFriendName;
+  String searchHint;
 
   String content;
   String lessonWarn;

@@ -1,3 +1,4 @@
+import 'package:conlamduoc/widget/avatar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -6,131 +7,121 @@ import 'package:conlamduoc/core/R.dart';
 class SearchItemCell extends StatefulWidget {
   @override
   _SearchItemCellState createState() => _SearchItemCellState();
-  
+
   final EdgeInsets padding;
-  final Color bgColor;
-  final AssetImage imageLeading;
-  Widget imageTrailing;
-  Widget trailingAfterTap;
+  final Color backgroundColor;
+  final String imageLeading;
+  final Widget imageTrailing;
+  final Widget imageTrailingAfterTap;
   final String title;
-  final double  titleSize;
+  final double titleSize;
   final Widget description;
   final GestureTapCallback onTap;
 
   SearchItemCell({
-   @required this.imageLeading,
+    @required this.imageLeading,
     @required this.title,
     @required this.description,
     @required this.onTap,
-    this.trailingAfterTap,
-    this.titleSize = 17,
+    this.imageTrailingAfterTap,
+    this.titleSize = 16,
     this.imageTrailing,
     this.padding = const EdgeInsets.all(10),
     dynamic trailing,
-    this.bgColor = Colors.white,
+    this.backgroundColor = Colors.white,
   });
-
 }
 
 class _SearchItemCellState extends State<SearchItemCell> {
-
+  static final double radius = 10;
   bool tapped = false;
 
   @override
   Widget build(BuildContext context) {
-    print(widget.titleSize);
-    return GestureDetector( 
+    return GestureDetector(
       onTap: this.widget.onTap,
       child: Container(
-      width: R.appRatio.deviceWidth - 40,
-      constraints: BoxConstraints(maxHeight: 100),
-      decoration: BoxDecoration(
-        color: this.widget.bgColor,
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 2.0,
-            offset: Offset(1.0, 1.0),
-            color: Color.fromRGBO(0, 0, 0, 0.25),
-          ),
-        ],
-      ),
-      padding: widget.padding,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-         Container(
-          constraints:BoxConstraints(maxHeight: (R.appRatio.deviceWidth-40)*0.2, maxWidth: (R.appRatio.deviceWidth-40)*0.2),
-          decoration: new BoxDecoration(
-              shape: BoxShape.circle,
-              image: new DecorationImage(
-                  fit: BoxFit.fill,
-                  image: widget.imageLeading
-              )
-          )),
-          widget.imageTrailing!=null?
-          Container( 
-            width: (R.appRatio.deviceWidth-40)*0.6,
-            height: 80,
-            alignment: Alignment.topLeft,
-            child: Column( 
-              mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-            Container( 
-            alignment: Alignment.centerLeft,
-              child: Text(widget.title, overflow: TextOverflow.ellipsis,
-               style: TextStyle(fontSize: widget.titleSize, fontWeight: FontWeight.bold),),
+        width: R.appRatio.deviceWidth,
+        constraints: BoxConstraints(maxHeight: 100),
+        decoration: BoxDecoration(
+          color: this.widget.backgroundColor,
+          borderRadius: BorderRadius.all(Radius.circular(radius)),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 2.0,
+              offset: Offset(1.0, 1.0),
+              color: Color.fromRGBO(0, 0, 0, 0.25),
             ),
-            Container( 
-            height: 40,
-            alignment: Alignment.centerLeft,
-              child: widget.description,
-            )
-          ],),
-          ):Container( 
-            constraints: BoxConstraints(maxWidth: (R.appRatio.deviceWidth-40)*0.6),
-            height: 80,
-            alignment: Alignment.topLeft,
-            child: Column( 
-              mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-            Container( 
-            alignment: Alignment.centerLeft,
-              child: Text(widget.title, overflow: TextOverflow.ellipsis,
-               style: TextStyle(fontSize: widget.titleSize, fontWeight: FontWeight.bold),),
-            ),
-            Container( 
-            height: 40,
-            alignment: Alignment.centerLeft,
-              child: widget.description,
-            )
-          ],),),
-          tapped==false?
-          widget.imageTrailing!=null? Container( 
-            child: GestureDetector( 
-              child: widget.imageTrailing,
-              onTap: (){
-                if (widget.trailingAfterTap!=null)
-                {
-                  setState(() {
-                    tapped = !tapped;
-                  });
-                }
+          ],
+        ),
+        padding: widget.padding,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            AvatarView(
+              avatarImageURL: widget.imageLeading,
+              avatarImageSize: 60,
+              avatarBoxBorder: Border.all(
+                width: 2,
+                color: R.colors.oldYellow,
+              ),
+              pressAvatarImage: () {
+                // TODO: Code here
+                print("[SEARCH ITEM CELL] Pressing avatar image");
               },
             ),
-          ):Container():
-          widget.trailingAfterTap!=null? Container( 
-            width: (R.appRatio.deviceWidth-40)*0.2,
-            child: GestureDetector( 
-              child: widget.trailingAfterTap,
-              onTap: (){setState(() {
-                tapped = !tapped;
-              });},
+            SizedBox(
+              width: 10,
             ),
-          ):Container()
-        ],
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text(
+                    widget.title,
+                    overflow: TextOverflow.ellipsis,
+                    textScaleFactor: 1.0,
+                    style: TextStyle(
+                      fontSize: widget.titleSize,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  widget.description,
+                ],
+              ),
+            ),
+            (tapped == false)
+                ? (widget.imageTrailing != null)
+                    ? GestureDetector(
+                        child: widget.imageTrailing,
+                        onTap: () {
+                          if (widget.imageTrailingAfterTap != null) {
+                            setState(() {
+                              tapped = !tapped;
+                            });
+                          }
+                        },
+                      )
+                    : Container()
+                : (widget.imageTrailingAfterTap != null)
+                    ? GestureDetector(
+                        child: widget.imageTrailingAfterTap,
+                        onTap: () {
+                          setState(() {
+                            tapped = !tapped;
+                          });
+                        },
+                      )
+                    : Container(),
+          ],
+        ),
       ),
-    ),
     );
   }
 }

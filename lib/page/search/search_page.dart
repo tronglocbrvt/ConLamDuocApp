@@ -5,7 +5,7 @@ import 'package:conlamduoc/model/challenge.dart';
 import 'package:conlamduoc/model/lesson.dart';
 import 'package:conlamduoc/model/user.dart';
 import 'package:conlamduoc/widget/search_item_cell.dart';
-import 'package:conlamduoc/widgets/main_lesson.dart';
+import 'package:conlamduoc/widget/main_lesson.dart';
 import 'package:conlamduoc/widget/main_challenge.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +69,7 @@ class _SearchPageState extends State<SearchPage> {
           int coins = element.coins;
           String lessonField = element.lessonField;
           String thumbnailImageUrl = element.thumbnailImageUrl;
-          String webUrl = element.webUrl;
+          String webUrl = element.videoUrl;
 
           return Container(
             margin: EdgeInsets.only(
@@ -382,7 +382,7 @@ class _SearchPageState extends State<SearchPage> {
         length: _tabBarLength,
         child: Scaffold(
           resizeToAvoidBottomInset: false,
-          backgroundColor: R.colors.lightGreenColor,
+          backgroundColor: R.colors.appBackground,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(_preferredHeightSize),
             // here the desired height

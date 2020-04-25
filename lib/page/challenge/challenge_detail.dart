@@ -11,6 +11,14 @@ import 'package:conlamduoc/core/R.dart';
 import 'package:conlamduoc/manager/raw_data_manager.dart';
 
 class ChallengeDetail extends StatelessWidget {
+
+  final int id;
+  final String image;
+
+  const ChallengeDetail({
+    @required this.id,
+    this.image,
+  });
    
   @override
   Widget build(BuildContext context) {
@@ -18,6 +26,7 @@ class ChallengeDetail extends StatelessWidget {
       resizeToAvoidBottomPadding: false,
       body: SafeArea(
         child: Container()
+      )
     );
   }
 

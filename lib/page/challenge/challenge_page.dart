@@ -2,7 +2,7 @@ import 'package:conlamduoc/manager/raw_data_manager.dart';
 import 'package:conlamduoc/model/challenge.dart';
 import 'package:conlamduoc/model/lesson.dart';
 import 'package:conlamduoc/page/profile/profile_page.dart';
-import 'package:conlamduoc/widgets/loading_dot.dart';
+import 'package:conlamduoc/widget/loading_dot.dart';
 import 'package:conlamduoc/widget/main_challenge.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -64,9 +64,9 @@ class _ChallengePageState extends State<ChallengePage> {
           ),
         ),
       ),
-      backgroundColor: R.colors.lightGreenColor,
+      backgroundColor: R.colors.appBackground,
       body: (_isLoading
-          ? LoadingDotStyle02()
+          ? LoadingDotStyle01
           : Container(
               margin: EdgeInsets.only(
                 left: 10,

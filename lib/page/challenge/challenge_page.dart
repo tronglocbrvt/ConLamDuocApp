@@ -1,6 +1,5 @@
 import 'package:conlamduoc/manager/raw_data_manager.dart';
 import 'package:conlamduoc/model/challenge.dart';
-import 'package:conlamduoc/model/lesson.dart';
 import 'package:conlamduoc/page/profile/profile_page.dart';
 import 'package:conlamduoc/widget/loading_dot.dart';
 import 'package:conlamduoc/widget/main_challenge.dart';

@@ -4,6 +4,7 @@ import 'package:conlamduoc/manager/raw_data_manager.dart';
 import 'package:conlamduoc/model/challenge.dart';
 import 'package:conlamduoc/model/lesson.dart';
 import 'package:conlamduoc/model/user.dart';
+import 'package:conlamduoc/widget/loading_dot.dart';
 import 'package:conlamduoc/widget/search_item_cell.dart';
 import 'package:conlamduoc/widget/main_lesson.dart';
 import 'package:conlamduoc/widget/main_challenge.dart';
@@ -29,144 +30,120 @@ class _SearchPageState extends State<SearchPage> {
   List<Challenge> challengeList;
   List<Lesson> lessonList;
 
-  void _getNotificationList() {
+  void _getAllDataList() {
     if (!_isLoading) {
       setState(() {
         _isLoading = true;
       });
     }
 
+    lessonList.addAll(RawDataManager.lessonList);
+    userList.addAll(RawDataManager.userList);
+    challengeList.addAll(RawDataManager.challengeList);
+
     Future.delayed(Duration(milliseconds: 1000), () {
       setState(() {
         _isLoading = !_isLoading;
       });
+      _requireSearchBoxFocus();
     });
-
-    lessonList.addAll(RawDataManager.lessonList);
-    userList.addAll(RawDataManager.userList);
-    challengeList.addAll(RawDataManager.challengeList);
   }
-  
- 
 
-  _buildLessonList()
-  {
-    print(lessonList.length);
-    return Container(
-      margin: EdgeInsets.only(
-        left: 10,
-        right: 10,
-        bottom: 40
-      ),
-      child: ListView.builder(
-        scrollDirection: Axis.vertical,
-        itemCount: lessonList.length,
-        itemBuilder: (BuildContext ctxt, int index) {
-          Lesson element = lessonList[index];
-          int id = element.id;
-          String title = element.nameLesson;
-          String content = element.content;
-          int coins = element.coins;
-          String lessonField = element.lessonField;
-          String thumbnailImageUrl = element.thumbnailImageUrl;
-          String videoUrl = element.videoUrl;
+  _buildLessonList() {
+    return ListView.builder(
+      scrollDirection: Axis.vertical,
+      itemCount: lessonList.length,
+      itemBuilder: (BuildContext ctxt, int index) {
+        Lesson element = lessonList[index];
+        int id = element.id;
+        String title = element.nameLesson;
+        String content = element.content;
+        int coins = element.coins;
+        String lessonField = element.lessonField;
+        String thumbnailImageUrl = element.thumbnailImageUrl;
+        String videoUrl = element.videoUrl;
 
-          return Container(
-            margin: EdgeInsets.only(
-              top: 15,
-              bottom: (index == lessonList.length - 1
-                  ? 15
-                  : 0),
-            ),
-            child: MainLesson(
-              id: id,
-              content: content,
-              thumbnailImageUrl: thumbnailImageUrl,
-              title: title,
-              coins: coins,
-              lessonField: lessonField,
-              videoUrl: videoUrl,
-            ),
-          );
-        },
-      ),
+        return Container(
+          margin: EdgeInsets.only(
+            top: 15,
+            bottom: (index == lessonList.length - 1 ? 15 : 0),
+            left: 15,
+            right: 15,
+          ),
+          child: MainLesson(
+            id: id,
+            content: content,
+            thumbnailImageUrl: thumbnailImageUrl,
+            title: title,
+            coins: coins,
+            lessonField: lessonField,
+            videoUrl: videoUrl,
+          ),
+        );
+      },
     );
-
   }
 
-
-   _buildUserlist()
-  {
-    print(userList.length);
-    return Container(
-      margin: EdgeInsets.only(
-        left: 10,
-        right: 10,
-        bottom: 40
-      ),
-      child: ListView.builder(
-        scrollDirection: Axis.vertical,
-        itemCount: userList.length,
-        itemBuilder: (BuildContext ctxt, int index) {
-          User element = userList[index];
-          String name = element.name;
-          String age = (DateTime.now().year - element.birthday.year).toString();
-          String img = element.img!=null? element.img : R.myIcons.avatar;
-          return Container(
+  _buildUserlist() {
+    return ListView.builder(
+      scrollDirection: Axis.vertical,
+      itemCount: userList.length,
+      itemBuilder: (BuildContext ctxt, int index) {
+        User element = userList[index];
+        String name = element.name;
+        String age = (DateTime.now().year - element.birthday.year).toString();
+        String img = element.img != null ? element.img : R.myIcons.avatar;
+        return Container(
             margin: EdgeInsets.only(
               top: 15,
-              bottom: (index == userList.length - 1
-                  ? 15
-                  : 0),
+              bottom: (index == userList.length - 1 ? 15 : 0),
+              left: 15,
+              right: 15,
             ),
             child: SearchItemCell(
-                onTap: null,
-                imageLeading: AssetImage(img), 
-                title: name,
-                description: Text(age + " tuổi"),
-                imageTrailing: Icon(Icons.group_add, size: 30),
-                trailingAfterTap: Icon(Icons.remove_circle_outline, size: 30,),
-                ));
-          
-        },
-      ),
+              onTap: null,
+              imageLeading: img,
+              title: name,
+              description: Text(age + " tuổi"),
+              imageTrailing: Icon(
+                Icons.group_add,
+                size: 30,
+              ),
+              imageTrailingAfterTap: Icon(
+                Icons.remove_circle_outline,
+                size: 30,
+              ),
+            ));
+      },
     );
   }
 
-  _buildChallengelist()
-  {
-    return Container(
-      margin: EdgeInsets.only(
-        left: 10,
-        right: 10,
-        bottom: 40
-      ),
-      child: ListView.builder(
-        scrollDirection: Axis.vertical,
-        itemCount: challengeList.length,
-        itemBuilder: (BuildContext ctxt, int index) {
-          Challenge element = challengeList[index];
-          String name = element.nameChallenge;
-          String description = element.describe;
-          String img = element.img!=null? element.img: R.myIcons.appbarChallenge;
-          int coin = element.coins;
-          return Container(
+  _buildChallengelist() {
+    return ListView.builder(
+      scrollDirection: Axis.vertical,
+      itemCount: challengeList.length,
+      itemBuilder: (BuildContext ctxt, int index) {
+        Challenge element = challengeList[index];
+        String name = element.nameChallenge;
+        String description = element.describe;
+        String img =
+            element.img != null ? element.img : R.myIcons.appbarChallenge;
+        int coin = element.coins;
+        return Container(
             margin: EdgeInsets.only(
               top: 15,
-              bottom: (index == challengeList.length - 1
-                  ? 15
-                  : 0),
+              bottom: (index == challengeList.length - 1 ? 15 : 0),
+              left: 15,
+              right: 15,
             ),
             child: MainChallenge(
-                id: element.id,
-                coins: coin,
-                content: description,
-                title: name,
-                thumbnailImageUrl: img,
-                ));
-          
-        },
-      ),
+              id: element.id,
+              coins: coin,
+              content: description,
+              title: name,
+              thumbnailImageUrl: img,
+            ));
+      },
     );
   }
 
@@ -175,12 +152,11 @@ class _SearchPageState extends State<SearchPage> {
     super.initState();
     _textSearchController = TextEditingController();
     _searchFocusNode = FocusNode();
-    _requireSearchBoxFocus();
-     _isLoading = true;
+    _isLoading = true;
     lessonList = List<Lesson>();
     userList = List<User>();
     challengeList = List<Challenge>();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _getNotificationList());
+    WidgetsBinding.instance.addPostFrameCallback((_) => _getAllDataList());
   }
 
   @override
@@ -190,44 +166,46 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   void _onChangedSearchBox(data) {
-    
     print(tiengviet(data));
     this.challengeList.clear();
     this.lessonList.clear();
     this.userList.clear();
-    if (data == "")
-    {
+    if (data == "") {
       setState(() {
         this.userList.addAll(RawDataManager.userList);
         this.lessonList.addAll(RawDataManager.lessonList);
         this.challengeList.addAll(RawDataManager.challengeList);
       });
-    }
-    else{
-    List<User> tempUser = new List<User>();
-    List<Lesson> tempLesson = new List<Lesson>();
-    List<Challenge> tempChallenge = new List<Challenge>();
-    RawDataManager.lessonList.forEach((lesson){
-      if (tiengviet(lesson.nameLesson).toLowerCase().contains(tiengviet(data).toString().toLowerCase()))
-        tempLesson.add(lesson);
-    });
+    } else {
+      List<User> tempUser = new List<User>();
+      List<Lesson> tempLesson = new List<Lesson>();
+      List<Challenge> tempChallenge = new List<Challenge>();
+      RawDataManager.lessonList.forEach((lesson) {
+        if (tiengviet(lesson.nameLesson)
+            .toLowerCase()
+            .contains(tiengviet(data).toString().toLowerCase()))
+          tempLesson.add(lesson);
+      });
 
-    RawDataManager.userList.forEach((user){
-      if (tiengviet(user.name).toLowerCase().contains(tiengviet(data).toString().toLowerCase()))
-        tempUser.add(user);
-    });
+      RawDataManager.userList.forEach((user) {
+        if (tiengviet(user.name)
+            .toLowerCase()
+            .contains(tiengviet(data).toString().toLowerCase()))
+          tempUser.add(user);
+      });
 
-    RawDataManager.challengeList.forEach((chal){
-      if (tiengviet(chal.nameChallenge).toLowerCase().contains(tiengviet(data).toString().toLowerCase()))
-        tempChallenge.add(chal);
-    });
+      RawDataManager.challengeList.forEach((chal) {
+        if (tiengviet(chal.nameChallenge)
+            .toLowerCase()
+            .contains(tiengviet(data).toString().toLowerCase()))
+          tempChallenge.add(chal);
+      });
       setState(() {
         this.userList.addAll(tempUser);
         this.lessonList.addAll(tempLesson);
         this.challengeList.addAll(tempChallenge);
       });
     }
-    
   }
 
   void _onSubmittedSearchBox(data) {
@@ -240,7 +218,7 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   void _requireSearchBoxFocus() {
-    Future.delayed(Duration(milliseconds: 800), () {
+    Future.delayed(Duration(milliseconds: 500), () {
       _searchFocusNode.requestFocus();
     });
   }
@@ -281,7 +259,7 @@ class _SearchPageState extends State<SearchPage> {
                 ),
                 onSubmitted: (data) => _onSubmittedSearchBox(data),
                 onChanged: (data) => _onChangedSearchBox(data),
-                cursorColor: R.colors.green,
+                cursorColor: R.colors.strongBlue,
                 decoration: InputDecoration(
                   isDense: true,
                   enabledBorder: InputBorder.none,
@@ -304,7 +282,7 @@ class _SearchPageState extends State<SearchPage> {
               margin: EdgeInsets.only(left: 15, right: 15),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: R.colors.green,
+                color: R.colors.strongBlue,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
               child: Image.asset(
@@ -396,13 +374,15 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ),
           ),
-          body: TabBarView(
-            children: [           
-              Center(child: _buildUserlist()),
-              Center(child: _buildChallengelist()),
-              Center(child: _buildLessonList()),
-            ],
-          ),
+          body: (_isLoading
+              ? LoadingDotStyle02()
+              : TabBarView(
+                  children: [
+                    Center(child: _buildUserlist()),
+                    Center(child: _buildChallengelist()),
+                    Center(child: _buildLessonList()),
+                  ],
+                )),
         ),
       ),
     );

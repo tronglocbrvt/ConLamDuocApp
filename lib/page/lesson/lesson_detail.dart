@@ -1,5 +1,6 @@
 import 'package:conlamduoc/core/R.dart';
 import 'package:conlamduoc/core/helper.dart';
+import 'package:conlamduoc/util/image_cache_manager.dart';
 import 'package:conlamduoc/widget/custom_dialog.dart/custom_alert_dialog.dart';
 import 'package:conlamduoc/widget/custom_videoplayer.dart';
 import 'package:conlamduoc/widget/ui_button.dart';
@@ -139,12 +140,30 @@ class _LessonDetailState extends State<LessonDetail> {
                 height: 15,
               ),
               // Video
-              CustomVideoPlayer(
-                selectedUrl: widget.selectedUrl,
-                appBar: customAppBar,
-                key: _cvps,
-                callBackVideoFinished: () => _canReceiveCoins(),
-                autoPlay: true,
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: R.colors.oldYellow,
+                    width: 2,
+                  ),
+                ),
+                child: Stack(
+                  children: [
+                    AspectRatio(
+                      aspectRatio: 16 / 9,
+                      child: Container(
+                        color: Colors.black,
+                      ),
+                    ),
+                    CustomVideoPlayer(
+                      selectedUrl: widget.selectedUrl,
+                      appBar: customAppBar,
+                      key: _cvps,
+                      callBackVideoFinished: () => _canReceiveCoins(),
+                      autoPlay: true,
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 15,

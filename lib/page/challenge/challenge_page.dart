@@ -23,45 +23,57 @@ class _ChallengePageState extends State<ChallengePage> {
     super.initState();
     _isLoading = true;
     challengeList = List();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _getNotificationList());
+    WidgetsBinding.instance.addPostFrameCallback((_) => _getChallengeList());
   }
 
-  void _getNotificationList() {
+  void _getChallengeList() {
     if (!_isLoading) {
       setState(() {
         _isLoading = true;
       });
     }
 
+    challengeList.addAll(RawDataManager.challengeList);
+
     Future.delayed(Duration(milliseconds: 1000), () {
       setState(() {
         _isLoading = !_isLoading;
       });
     });
-
-    challengeList.addAll(RawDataManager.challengeList);
   }
 
   @override
   Widget build(BuildContext context) {
     Widget _buildWidget = Scaffold(
-      appBar: CupertinoNavigationBar(
-        backgroundColor: R.colors.navigationBar,
-        leading: Image.asset(
-          R.images.logo,
-          width: R.appRatio.appWidth70,
+      appBar: AppBar(
+        backgroundColor: R.colors.appBarBackground,
+        centerTitle: true,
+        leading: Container(
+          margin: EdgeInsets.only(left: 10),
+          child: Image.asset(R.images.logo),
         ),
-        middle: Image.asset(
-          R.images.title_challenge,
-          height: R.appRatio.appSpacing50,
-        ),
-        trailing: GestureDetector(
-          onTap: () => pushPage(context, ProfilePage()),
-          child: Image.asset(
-            R.myIcons.appbarProfile,
-            height: R.appRatio.appSpacing30,
+        title: Text(
+          R.strings.challenge.toUpperCase(),
+          textScaleFactor: 1.0,
+          style: TextStyle(
+            color: R.colors.strongBlue,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
           ),
         ),
+        actions: [
+          Container(
+            margin: EdgeInsets.only(right: 10),
+            child: GestureDetector(
+              onTap: () => pushPage(context, ProfilePage()),
+              child: Image.asset(
+                R.myIcons.appbarProfile,
+                width: 25,
+                height: 25,
+              ),
+            ),
+          ),
+        ],
       ),
       backgroundColor: R.colors.appBackground,
       body: (_isLoading
@@ -79,21 +91,22 @@ class _ChallengePageState extends State<ChallengePage> {
                   String name = element.nameChallenge;
                   String description = element.describe;
                   String thumbnailImageUrl  = element.thumbnailImageUrl!=null? element.thumbnailImageUrl: R.myIcons.appbarChallenge;
+                  String img = element.img != null
+                      ? element.img
+                      : R.myIcons.appbarChallenge;
                   int coin = element.coins;
                   return Container(
-                    margin: EdgeInsets.only(
-                      top: 15,
-                      bottom: (index == challengeList.length - 1
-                          ? 15
-                          : 0),
-                    ),
-                    child: MainChallenge(
+                      margin: EdgeInsets.only(
+                        top: 15,
+                        bottom: (index == challengeList.length - 1 ? 15 : 0),
+                      ),
+                      child: MainChallenge(
                         id: element.id,
                         coins: coin,
                         content: description,
                         title: name,
                         thumbnailImageUrl: thumbnailImageUrl,
-                        img: element.img,
+                        img: img,
                         ));
                         },
               ),

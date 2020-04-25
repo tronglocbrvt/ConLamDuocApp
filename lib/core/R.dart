@@ -6,8 +6,6 @@ class R {
   static final _Color colors = _Color();
   static Strings strings = Strings();
   static final _Images images = _Images();
-  static final Styles styles = Styles();
-
   static AppRatio appRatio = AppRatio();
   static _MyIcons myIcons = _MyIcons();
 
@@ -324,7 +322,6 @@ class AppRatio {
     this.deviceHeight = deviceHeight.roundToDouble();
     this.devicePixelRatio = devicePixelRatio.roundToDouble();
     this.textScaleFactor = textScaleFactor.roundToDouble();
-    // print("Width x Height x DPR x TSF: $deviceWidth, $deviceHeight, $devicePixelRatio, $textScaleFactor");
 
     // Find font size
     appFontSize12 = _computeFontSize(this._figmaFontSize12);
@@ -342,7 +339,6 @@ class AppRatio {
     appFontSize38 = _computeFontSize(this._figmaFontSize38);
     appFontSize40 = _computeFontSize(this._figmaFontSize40);
     appFontSize42 = _computeFontSize(this._figmaFontSize42);
-    // print("Font size: ${this._figmaFontSize22}, $appFontSize22 - ${this._figmaFontSize18}, $appFontSize18");
 
     // Find width & height of objects
     appWidth40 = _computeWidth(this._figmaWidth40);
@@ -463,29 +459,9 @@ class AppRatio {
 }
 
 class _Color {
-  // Gradient color
-  final Gradient uiGradient = LinearGradient(colors: [
-    Color(0xFFFC8800),
-    Color(0xFFF26B30),
-    Color(0xFFEE4C3E),
-    Color(0xFFDA2A16)
-  ], stops: [
-    0.0,
-    0.25,
-    0.5,
-    1.0
-  ]);
-
-  /*
-    + [NgocVo] Unused colors
-      - final Color yellow = Color(0xFFFC8800);
-      - final Color red = Color(0xFFDA2A16);
-      - final Color pinkRed = Color(0xFFEE4C3E);
-      - final Color blue = Color(0xFF03318C);
-  */
-
   // Official/Main/Common color of app
   Color appBackground = Color(0xFFF1FFD6);
+  Color appBarBackground = Color(0xFFC6FF59);
   Color green = Color(0xFFC6FF59);
   Color blurGreen = Color.fromRGBO(198, 255, 89, 0.75);
   Color lightGreen = Color(0xFFF1FFD6);
@@ -499,20 +475,18 @@ class _Color {
   Color strongBlue = Color(0xFF173F5F);
   Color lightBlue = Color.fromRGBO(23, 63, 95, 0.25);
   Color pink = Color(0xFFFFA09E);
-
-  Color contentText = Color(0xFF000000);
-  Color orangeNoteText = Color(0xFFFD632C);
-  Color normalNoteText = Color(0xFF808080);
-  Color lighterNormalNoteText = Color(0xFFABABAB);
-  Color boxBackground = Color(0xFFFFFFFF);
-  Color sectionBackgroundLayer = Color.fromRGBO(255, 235, 222, 0.2);
   Color btnShadow = Color.fromRGBO(0, 0, 0, 0.5);
-  Color textShadow = Color.fromRGBO(0, 0, 0, 0.25);
-  Color tabLayer = Color.fromRGBO(253, 99, 44, 0.1);
-  Color discussionLayer = Color.fromRGBO(253, 99, 44, 0.2);
-  Color notiLayer = Color.fromRGBO(253, 99, 44, 0.2);
 
-  Color navigationBar = Color(0xFFC6FF59);
+//  Color contentText = Color(0xFF000000);
+//  Color orangeNoteText = Color(0xFFFD632C);
+//  Color normalNoteText = Color(0xFF808080);
+//  Color lighterNormalNoteText = Color(0xFFABABAB);
+//  Color boxBackground = Color(0xFFFFFFFF);
+//  Color sectionBackgroundLayer = Color.fromRGBO(255, 235, 222, 0.2);
+//  Color textShadow = Color.fromRGBO(0, 0, 0, 0.25);
+//  Color tabLayer = Color.fromRGBO(253, 99, 44, 0.1);
+//  Color discussionLayer = Color.fromRGBO(253, 99, 44, 0.2);
+//  Color notiLayer = Color.fromRGBO(253, 99, 44, 0.2);
 }
 
 class _MyIcons {
@@ -532,6 +506,7 @@ class _MyIcons {
 
 class _Images {
   final String logo = 'assets/logo/logo.png';
+  final String logoSquare = 'assets/logo/logo_square.png';
   final String welcomeBackground = 'assets/images/welcome_background.png';
   final String button_challenge = "assets/images/button_challenge.png";
   final String button_join = "assets/images/button_join.png";
@@ -580,5 +555,3 @@ class Strings {
   String receiveCoins;
   String receiveCoinsSuccessfully;
 }
-
-class Styles {}

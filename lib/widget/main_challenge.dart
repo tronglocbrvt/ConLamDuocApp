@@ -111,7 +111,7 @@ class MainChallenge extends StatelessWidget {
                         "Xu: ${this.coins}",
                         textScaleFactor: 1.0,
                         style: TextStyle(
-                          color: R.colors.gray808080,
+                          color: R.colors.strongOrange,
                           fontWeight: FontWeight.normal,
                           fontStyle: FontStyle.italic,
                           fontSize: 11,

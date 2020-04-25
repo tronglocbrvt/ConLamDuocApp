@@ -77,34 +77,29 @@ class CustomCell extends StatelessWidget {
   Widget _renderFFButton() {
     return (this.enableFFButton
         ? Container(
-            padding: EdgeInsets.only(
-              left: R.appRatio.appSpacing10,
-              right: R.appRatio.appSpacing5,
-            ),
-            child: UIButton(
-              text: (!this.isFollowButton
-                  ? R.strings.unFollow
-                  : R.strings.follow),
-              textColor: (!this.isFollowButton
-                  ? R.colors.gray515151
-                  : R.colors.oldYellow),
-              textSize: R.appRatio.appFontSize12,
-              radius: 0,
-              width: R.appRatio.appWidth80,
-              height: R.appRatio.appHeight30,
-              enableShadow: false,
-              border: Border.all(
-                width: 1,
-                color: (!this.isFollowButton
-                    ? R.colors.gray515151
-                    : R.colors.oldYellow),
+           
+            child: Row(
+              children: <Widget>[
+              Container(
+                width: 0,
+                child: FlatButton(
+                child: Icon(Icons.camera_alt,size: 25,),
+                onPressed: () {
+                  if (this.pressFFButton != null) {
+                    this.pressFFButton();
+                  }
+                },)
               ),
-              onTap: () {
+            SizedBox(width: 20,),
+            FlatButton(
+              child: Icon(Icons.image,size: 25,),
+              onPressed: () {
                 if (this.pressFFButton != null) {
                   this.pressFFButton();
                 }
               },
-            ),
+            )
+            ],)
           )
         : Container());
   }

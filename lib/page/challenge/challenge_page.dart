@@ -52,7 +52,7 @@ class _ChallengePageState extends State<ChallengePage> {
           width: R.appRatio.appWidth70,
         ),
         middle: Image.asset(
-          R.images.title_lesson,
+          R.images.title_challenge,
           height: R.appRatio.appSpacing50,
         ),
         trailing: GestureDetector(
@@ -65,7 +65,7 @@ class _ChallengePageState extends State<ChallengePage> {
       ),
       backgroundColor: R.colors.appBackground,
       body: (_isLoading
-          ? LoadingDotStyle01
+          ? LoadingDotStyle02()
           : Container(
               margin: EdgeInsets.only(
                 left: 10,
@@ -93,6 +93,7 @@ class _ChallengePageState extends State<ChallengePage> {
                         content: description,
                         title: name,
                         thumbnailImageUrl: thumbnailImageUrl,
+                        img: element.img,
                         ));
                         },
               ),

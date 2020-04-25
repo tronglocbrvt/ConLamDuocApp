@@ -1,11 +1,13 @@
 import 'package:conlamduoc/core/R.dart';
 import 'package:conlamduoc/core/helper.dart';
+import 'package:conlamduoc/page/challenge/challenge_detail.dart';
 import 'package:conlamduoc/page/lesson/lesson_detail.dart';
 import 'package:flutter/material.dart';
 
 class MainChallenge extends StatelessWidget {
   final int id;
   final String thumbnailImageUrl;
+  final String img;
   final String title;
   final String content;
   final int coins;
@@ -14,6 +16,7 @@ class MainChallenge extends StatelessWidget {
 
   const MainChallenge({
     @required this.id,
+    this.img,
     this.thumbnailImageUrl,
     this.title,
     this.content,
@@ -24,16 +27,15 @@ class MainChallenge extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // pushPage(
-        //   context,
-        //   // LessonDetail(
-        //   //   selectedUrl: this.webUrl,
-        //   //   title: this.title,
-        //   //   coins: this.coins,
-        //   //   content: this.content,
-        //   //   lessonField: this.lessonField,
-        //   // ),
-        // );
+        pushPage(
+          context,
+          ChallengeDetail(
+            id: this.id,
+            image: this.img,
+            name: this.title,
+            coin: this.coins,
+          ),
+        );
       },
       child: Container(
         padding: EdgeInsets.all(10),

@@ -10,6 +10,7 @@ class Challenge extends MapperObject {
 	int id;
 	String nameChallenge;
 	String describe;
+  bool isTakeImg;
   String img;
   String  thumbnailImageUrl;
 	int coins; // coin sau mỗi Challenge

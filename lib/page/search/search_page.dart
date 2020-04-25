@@ -132,7 +132,6 @@ import 'package:conlamduoc/core/helper.dart';
 //    ));
 //  }
 
-
 class SearchPage extends StatefulWidget {
   @override
   _SearchPageState createState() => _SearchPageState();
@@ -141,7 +140,8 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   static TextEditingController _textSearchController;
   static FocusNode _searchFocusNode;
-  final double _preferredHeightSize = 110.0;
+  final double _preferredHeightSize = 145.0;
+  final int _tabBarLength = 2;
 
   @override
   void initState() {
@@ -284,23 +284,96 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize:
-        Size.fromHeight(_preferredHeightSize), // here the desired height
-        child: AppBar(
-          backgroundColor: R.colors.greenColor,
-          leading: _buildAppBarLeading(),
-          titleSpacing: 0.0,
-          title: _buildAppBarTitle(),
-          flexibleSpace: _buildAppBarSearchBox(),
+  List<Widget> _buildTabBarTitle() {
+    return [
+      // Tab: Friends
+      Tab(
+        child: Padding(
+          padding: EdgeInsets.only(top: 8),
+          child: Text(
+            R.strings.friend.toUpperCase(),
+            style: TextStyle(
+              color: R.colors.strongBlue,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ),
-      body: Center(
-        child: Text("Tìm kiếm"),
+      // Tab: Challenges
+      Tab(
+        child: Padding(
+          padding: EdgeInsets.only(top: 8),
+          child: Text(
+            R.strings.challenge.toUpperCase(),
+            style: TextStyle(
+              color: R.colors.strongBlue,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+      // Tab: Lessons
+      Tab(
+        child: Padding(
+          padding: EdgeInsets.only(top: 8),
+          child: Text(
+            R.strings.lesson.toUpperCase(),
+            style: TextStyle(
+              color: R.colors.strongBlue,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+    ];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Widget _buildWidget = MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.white,
+      ),
+      home: DefaultTabController(
+        length: _tabBarLength,
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(_preferredHeightSize),
+            // here the desired height
+            child: AppBar(
+              backgroundColor: R.colors.greenColor,
+              leading: _buildAppBarLeading(),
+              titleSpacing: 0.0,
+              title: _buildAppBarTitle(),
+              flexibleSpace: _buildAppBarSearchBox(),
+              bottom: TabBar(
+                indicatorColor: R.colors.strongBlue,
+                indicatorWeight: 3,
+                tabs: _buildTabBarTitle(),
+              ),
+            ),
+          ),
+          body: TabBarView(
+            children: [
+              // TODO: Display listview of ALL routes and FAVORITE routes
+              Center(child: Text("Listview of FRIENDS")),
+              Center(child: Text("Listview of CHALLENGES")),
+              Center(child: Text("Listview of LESSONS")),
+            ],
+          ),
+        ),
       ),
     );
+
+    return NotificationListener<OverscrollIndicatorNotification>(
+        child: _buildWidget,
+        onNotification: (overscroll) {
+          overscroll.disallowGlow();
+          return null;
+        });
   }
+}

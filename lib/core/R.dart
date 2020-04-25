@@ -358,6 +358,7 @@ class Strings {
   String feed;
   String lesson;
   String challenge;
+  String friend;
   String game;
   String profile;
   String search;

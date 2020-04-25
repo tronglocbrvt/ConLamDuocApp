@@ -11,6 +11,7 @@ class Challenge extends MapperObject {
 	String nameChallenge;
 	String describe;
   String img;
+  String  thumbnailImageUrl;
 	int coins; // coin sau mỗi Challenge
 	bool isActive; 
 	String field; // lĩnh vực challenge

@@ -78,7 +78,7 @@ class _ChallengePageState extends State<ChallengePage> {
                   Challenge element = challengeList[index];
                   String name = element.nameChallenge;
                   String description = element.describe;
-                  String img = element.img!=null? element.img: R.myIcons.appbarChallenge;
+                  String thumbnailImageUrl  = element.thumbnailImageUrl!=null? element.thumbnailImageUrl: R.myIcons.appbarChallenge;
                   int coin = element.coins;
                   return Container(
                     margin: EdgeInsets.only(
@@ -92,7 +92,7 @@ class _ChallengePageState extends State<ChallengePage> {
                         coins: coin,
                         content: description,
                         title: name,
-                        thumbnailImageUrl: img,
+                        thumbnailImageUrl: thumbnailImageUrl,
                         ));
                         },
               ),

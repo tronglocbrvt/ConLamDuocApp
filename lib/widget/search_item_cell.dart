@@ -7,7 +7,7 @@ class SearchItemCell extends StatelessWidget {
   final EdgeInsets padding;
   final Color bgColor;
   final String imageLeading;
-  String imageTrailing;
+  Widget imageTrailing;
   final String title;
   final double  titleSize;
   final Widget description;
@@ -97,9 +97,7 @@ class SearchItemCell extends StatelessWidget {
             )
           ],),),
           imageTrailing!=null? Container( 
-            height: 60,
-            width: 60,
-            child: Image.asset(imageTrailing),
+            child: imageTrailing,
           ):Container()
         ],
       ),

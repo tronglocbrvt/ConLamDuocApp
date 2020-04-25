@@ -40,15 +40,14 @@ class _SearchPageState extends State<SearchPage> {
     });
 
     lessonList.addAll(RawDataManager.lessonList);
+    userList.addAll(RawDataManager.userList);
   }
   
-  _buildUserlist()
-  {
-    
-  }
+ 
 
   _buildLessonList()
   {
+    print(lessonList.length);
     return Container(
       margin: EdgeInsets.only(
         left: 10,
@@ -91,6 +90,43 @@ class _SearchPageState extends State<SearchPage> {
 
   }
 
+
+   _buildUserlist()
+  {
+    print(userList.length);
+    return Container(
+      margin: EdgeInsets.only(
+        left: 10,
+        right: 10,
+        bottom: 40
+      ),
+      child: ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: userList.length,
+        itemBuilder: (BuildContext ctxt, int index) {
+          User element = userList[index];
+          String name = element.name;
+          String age = element.birthday.year.toString();
+          return Container(
+            margin: EdgeInsets.only(
+              top: 15,
+              bottom: (index == userList.length - 1
+                  ? 15
+                  : 0),
+            ),
+            child: SearchItemCell(
+                onTap: null,
+                imageLeading: R.myIcons.appbarGame, 
+                title: name,
+                description: Text("Năm sinh: " + age),
+                imageTrailing: Icon(Icons.group_add,size: 40,),
+                ));
+          
+        },
+      ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -98,8 +134,8 @@ class _SearchPageState extends State<SearchPage> {
     _searchFocusNode = FocusNode();
     _requireSearchBoxFocus();
      _isLoading = true;
-    lessonList = List();
-    userList = List();
+    lessonList = List<Lesson>();
+    userList = List<User>();
     WidgetsBinding.instance.addPostFrameCallback((_) => _getNotificationList());
   }
 
@@ -113,21 +149,30 @@ class _SearchPageState extends State<SearchPage> {
     
     print(tiengviet(data));
     this.lessonList.clear();
-    if (data=="")
+    this.userList.clear();
+    if (data == "")
     {
       setState(() {
+        this.userList.addAll(RawDataManager.userList);
         this.lessonList.addAll(RawDataManager.lessonList);
       });
     }
     else{
-    List<Lesson> temp = new List<Lesson>();
+    List<User> tempUser = new List<User>();
+    List<Lesson> tempLesson = new List<Lesson>();
     RawDataManager.lessonList.forEach((lesson){
       if (tiengviet(lesson.nameLesson).toLowerCase().contains(tiengviet(data).toString().toLowerCase()))
-        temp.add(lesson);
+        tempLesson.add(lesson);
     });
-    setState(() {
-      this.lessonList.addAll(temp);
-    });
+
+      RawDataManager.userList.forEach((user){
+        if (tiengviet(user.name).toLowerCase().contains(tiengviet(data).toString().toLowerCase()))
+          tempUser.add(user);
+      });
+      setState(() {
+        this.userList.addAll(tempUser);
+        this.lessonList.addAll(tempLesson);
+      });
     }
     
   }
@@ -293,16 +338,8 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ),
           body: TabBarView(
-            children: [
-              // TODO: Display listview of ALL routes and FAVORITE routes
-              
-              Center(
-              child: 
-              SearchItemCell(
-                onTap: null,
-                imageLeading: R.myIcons.appbarGame, 
-                title: "AAAA",
-                description: Text("AAA"),)),
+            children: [           
+              Center(child: _buildUserlist()),
               Center(child: Text("Listview of CHALLENGES")),
               Center(child: _buildLessonList()),
             ],

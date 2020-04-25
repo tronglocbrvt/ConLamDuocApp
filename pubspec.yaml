@@ -31,6 +31,8 @@ dependencies:
   video_player: ^0.10.9+1
   chewie: ^0.9.10
 
+  tiengviet: ^0.3.0
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -58,6 +60,7 @@ flutter:
     - assets/data/userList.json
     - assets/data/lessons/lessonList.json
     - assets/data/feeds/feedList.json
+    - assets/data/challenge/challengeList.json
     - assets/localization/en.json
 
     - assets/logo/logo.png
@@ -70,8 +73,13 @@ flutter:
     - assets/icons/search.png
     - assets/icons/close_whitebold.png
     - assets/icons/coin.png
-    - assets/icons/calendar.png
 
+    - assets/icons/calendar.png
+    - assets/icons/icon_avatar.png
+    - assets/icons/add_friend.png
+    - assets/icons/close_whitebold.png
+
+    - assets/images/title_profile.png
     - assets/images/welcome_background.png
     - assets/images/button_challenge.png
     - assets/images/button_join.png
@@ -90,3 +98,5 @@ flutter:
     - assets/images/title_game.png
     - assets/images/title_hello.png
     - assets/images/title_profile.png
+
+    - assets/images/avatar.png

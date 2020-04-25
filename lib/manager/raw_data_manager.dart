@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:conlamduoc/core/R.dart';
 import 'package:conlamduoc/model/feed.dart';
 import 'package:conlamduoc/model/lesson.dart';
 import 'package:conlamduoc/model/mapper_object.dart';
 import 'package:conlamduoc/model/user.dart';
+import 'package:conlamduoc/model/challenge.dart';
 import 'package:conlamduoc/util/json_paser.dart';
 import 'package:flutter/services.dart';
 
@@ -12,11 +12,13 @@ class RawDataManager {
   static List<User> userList = List<User>();
   static List<Lesson> lessonList = List<Lesson>();
   static List<Feed> feedList = List<Feed>();
+  static List<Challenge> challengeList = List<Challenge>();
 
   static void initRawData() async {
     _initUsers();
     _initLessons();
     _initFeeds();
+    _initChallenges();
   }
 
   static void _initUsers() async {
@@ -69,6 +71,24 @@ class RawDataManager {
         feedList = list;
       } else {
         feedList.add(_parse<Feed>(data));
+      }
+    }
+  }
+
+  static void _initChallenges() async {
+    String jsonContent =
+        await rootBundle.loadString("assets/data/challenge/challengeList.json");
+    Map<String, dynamic> body = json.decode(jsonContent);
+    dynamic data = body['data']; // data just can be List or Map type.
+    if (data != null) {
+      if (data is List) {
+        List<Challenge> list = [];
+        data.forEach((obj) {
+          list.add(_parse<Challenge>(obj));
+        });
+        challengeList = list;
+      } else {
+        challengeList.add(_parse<Challenge>(data));
       }
     }
   }

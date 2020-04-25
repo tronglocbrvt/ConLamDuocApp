@@ -28,7 +28,7 @@ class WelcomePage extends StatelessWidget {
             ),
             Column(
                 children: <Widget>[
-                  SizedBox(height: R.appRatio.appWidth300 - R.appRatio.appSpacing20),
+                  SizedBox(height: R.appRatio.deviceHeight*0.35),
                   Container(
                     width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50*2),
                     margin: EdgeInsets.only(left: R.appRatio.appSpacing45),

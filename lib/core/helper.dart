@@ -1,7 +1,6 @@
-
-
 import 'dart:io';
 
+import 'package:conlamduoc/widget/custom_dialog.dart/custom_alert_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -24,36 +23,39 @@ enum RouteType {
   show,
 }
 
-Future setLanguage(String lang) async{
-  String jsonContent = await rootBundle.loadString("assets/localization/$lang.json");
+Future setLanguage(String lang) async {
+  String jsonContent =
+      await rootBundle.loadString("assets/localization/$lang.json");
   R.initLocalized(jsonContent);
 }
 
 // === ALERT === //
-Future<T> showAlert<T>(BuildContext context, String title, String message, List<Widget> actions) {
-  if (actions == null) {
-    actions = [
-      CupertinoButton(
-        child: Text(R.strings.ok),
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-      )
-    ];
-  }
+//Future<T> showAlert<T>(BuildContext context, String title, String message, List<Widget> actions) {
+//  if (actions == null) {
+//    actions = [
+//      CupertinoButton(
+//        child: Text(R.strings.ok),
+//        onPressed: () {
+//          Navigator.of(context).pop();
+//        },
+//      )
+//    ];
+//  }
+//
+//  return showCupertinoDialog<T>(
+//      context: context,
+//      builder: (context) {
+//        return CupertinoAlertDialog(
+//          title: Text(title),
+//          content: Text(message),
+//          actions: actions,
+//        );
+//      });
+//}
 
-  return showCupertinoDialog<T>(
-      context: context,
-      builder: (context) {
-        return CupertinoAlertDialog(
-          title: Text(title),
-          content: Text(message),
-          actions: actions,
-        );
-      });
-}
-
-Future<T> showActionSheet<T>(BuildContext context, Widget builderItem, double height, List<Widget> actions, [EdgeInsets padding = const EdgeInsets.all(20)]) {
+Future<T> showActionSheet<T>(BuildContext context, Widget builderItem,
+    double height, List<Widget> actions,
+    [EdgeInsets padding = const EdgeInsets.all(20)]) {
   Widget buttonContent;
   if (actions.length == 2) {
     Widget left = actions[0];
@@ -67,8 +69,7 @@ Future<T> showActionSheet<T>(BuildContext context, Widget builderItem, double he
         right,
       ],
     );
-  }
-  else {
+  } else {
     buttonContent = Column(
       children: actions,
     );
@@ -83,8 +84,8 @@ Future<T> showActionSheet<T>(BuildContext context, Widget builderItem, double he
           height: height,
           decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(14), topRight: Radius.circular(14))
-          ),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(14), topRight: Radius.circular(14))),
           child: Column(
             children: <Widget>[
               builderItem,
@@ -98,13 +99,11 @@ Future<T> showActionSheet<T>(BuildContext context, Widget builderItem, double he
   );
 }
 
-
 int _errorCode = 0;
+
 void setErrorCode(int code) {
   _errorCode = code;
 }
-
-
 
 void showSystemMessage(BuildContext context) {
   if (_errorCode != 0) {
@@ -125,19 +124,17 @@ void showSystemMessage(BuildContext context) {
           message = "";
           return;
       }
-      showAlert(context, R.strings.notice, message, [
-        CupertinoButton(
-          child: Text(R.strings.ok),
-          onPressed: () => pop(context),
-        )
-      ]);
+
+      showCustomAlertDialog(
+        context,
+        title: R.strings.notice,
+        content: message,
+        firstButtonText: R.strings.ok,
+        firstButtonFunction: () => pop(context),
+      );
     });
   }
 }
-
-
-
-
 
 // === NAVIGATOR === //
 void showPage<T>(BuildContext context, Widget page) {
@@ -146,7 +143,8 @@ void showPage<T>(BuildContext context, Widget page) {
   // TODO: pop all route
   //Navigator.of(context).popUntil((route) => route.isFirst);
 
-  Route route = _NoAnimateRoute(fullscreenDialog: true, builder: (context) => page);
+  Route route =
+      _NoAnimateRoute(fullscreenDialog: true, builder: (context) => page);
   Navigator.of(context).pushReplacement(route);
 }
 
@@ -158,7 +156,8 @@ Future<T> pushPage<T>(BuildContext context, Widget page) {
 
   hideLoading(context);
 
-  Route<T> route = _FullPageRoute<T>(animationType: RouteType.push, builder: (context) => page);
+  Route<T> route = _FullPageRoute<T>(
+      animationType: RouteType.push, builder: (context) => page);
   return Navigator.of(context).push(route);
 }
 
@@ -170,7 +169,8 @@ Future<T> presentPage<T>(BuildContext context, Widget page) {
 
   hideLoading(context);
 
-  Route<T> route = _FullPageRoute<T>(animationType: RouteType.present, builder: (context) => page);
+  Route<T> route = _FullPageRoute<T>(
+      animationType: RouteType.present, builder: (context) => page);
   return Navigator.of(context).push(route);
 }
 
@@ -182,7 +182,8 @@ Future<T> replacePage<T>(BuildContext context, Widget page, {dynamic result}) {
 
   hideLoading(context);
 
-  CupertinoPageRoute<T> route = CupertinoPageRoute<T>(fullscreenDialog: true, builder: (context) => page);
+  CupertinoPageRoute<T> route =
+      CupertinoPageRoute<T>(fullscreenDialog: true, builder: (context) => page);
   return Navigator.of(context).pushReplacement(route, result: result);
 }
 
@@ -190,14 +191,10 @@ void pop(BuildContext context, [dynamic object]) {
   Navigator.of(context).pop(object);
 }
 
-
-
 // === VALIDATE === //
 int getPlatform() {
   return Platform.isIOS ? PlatformType.iOS.index : PlatformType.Android.index;
 }
-
-
 
 // === LOADING === //
 _IndicatorRoute _indicator;
@@ -219,7 +216,11 @@ void hideLoading(BuildContext context) {
 }
 
 class _IndicatorRoute<T> extends ModalRoute {
-  _IndicatorRoute({bool barrierDismissible = true, String barrierLabel, Color barrierColor = const Color(0x80000000), RouteSettings settings})
+  _IndicatorRoute(
+      {bool barrierDismissible = true,
+      String barrierLabel,
+      Color barrierColor = const Color(0x80000000),
+      RouteSettings settings})
       : assert(barrierDismissible != null),
         _barrierDismissible = barrierDismissible,
         _barrierLabel = barrierLabel,
@@ -261,7 +262,8 @@ class _IndicatorRoute<T> extends ModalRoute {
   }
 
   @override
-  Widget buildPage(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
     return GestureDetector(
       onTap: () {
         if (isClosable) hideLoading(context);
@@ -278,7 +280,6 @@ class _IndicatorRoute<T> extends ModalRoute {
   }
 }
 
-
 class _NoAnimateRoute<T> extends CupertinoPageRoute<T> {
   _NoAnimateRoute({
     WidgetBuilder builder,
@@ -291,7 +292,8 @@ class _NoAnimateRoute<T> extends CupertinoPageRoute<T> {
         );
 
   @override
-  Widget buildTransitions(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+  Widget buildTransitions(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation, Widget child) {
     return child;
   }
 }
@@ -327,7 +329,8 @@ class _FullPageRoute<T> extends PageRoute<T> {
 
   @override
   void didChangePrevious(Route<dynamic> previousRoute) {
-    final String previousTitleString = previousRoute is CupertinoPageRoute ? previousRoute.title : null;
+    final String previousTitleString =
+        previousRoute is CupertinoPageRoute ? previousRoute.title : null;
     if (_previousTitle == null) {
       _previousTitle = ValueNotifier<String>(previousTitleString);
     } else {
@@ -385,7 +388,8 @@ class _FullPageRoute<T> extends PageRoute<T> {
     // If we're being popped into, we also cannot be swiped until the pop above
     // it completes. This translates to our secondary animation being
     // dismissed.
-    if (route.secondaryAnimation.status != AnimationStatus.dismissed) return false;
+    if (route.secondaryAnimation.status != AnimationStatus.dismissed)
+      return false;
     // If we're in a gesture already, we cannot start another.
     if (isPopGestureInProgress(route)) return false;
 
@@ -394,7 +398,8 @@ class _FullPageRoute<T> extends PageRoute<T> {
   }
 
   @override
-  Widget buildPage(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
     final Widget result = Semantics(
       scopesRoute: true,
       explicitChildNodes: true,
@@ -402,7 +407,8 @@ class _FullPageRoute<T> extends PageRoute<T> {
     );
     assert(() {
       if (result == null) {
-        throw FlutterError('The builder for route "${settings.name}" returned null.\n'
+        throw FlutterError(
+            'The builder for route "${settings.name}" returned null.\n'
             'Route builders must never return null.');
       }
       return true;
@@ -434,13 +440,12 @@ class _FullPageRoute<T> extends PageRoute<T> {
   }
 
   @override
-  Widget buildTransitions(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
-    return buildPageTransitions<T>(this, context, animation, secondaryAnimation, animationType, child);
+  Widget buildTransitions(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation, Widget child) {
+    return buildPageTransitions<T>(
+        this, context, animation, secondaryAnimation, animationType, child);
   }
 
   @override
   String get debugLabel => '${super.debugLabel}(${settings.name})';
 }
-
-
-

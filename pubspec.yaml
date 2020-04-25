@@ -24,11 +24,15 @@ dependencies:
   flutter_launcher_icons: ^0.7.4
   intl: ^0.16.0
   nuts_activity_indicator: ^0.1.1
-  video_player: ^0.10.9+1
   flutter_datetime_picker: ^1.3.8
   reflectable: any
   path_provider: ^0.4.1
+
+  video_player: ^0.10.9+1
+  chewie: ^0.9.10
+
   tiengviet: ^0.3.0
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -53,10 +57,9 @@ flutter:
 
   assets:
 
-    - assets/data/users/user1.json
-    - assets/data/users/user2.json
     - assets/data/userList.json
     - assets/data/lessons/lessonList.json
+    - assets/data/feeds/feedList.json
     - assets/data/challenge/challengeList.json
     - assets/localization/en.json
 
@@ -68,13 +71,15 @@ flutter:
     - assets/icons/challenge.png
     - assets/icons/profile.png
     - assets/icons/search.png
-    - assets/images/title_profile.png
+    - assets/icons/close_whitebold.png
+    - assets/icons/coin.png
 
     - assets/icons/calendar.png
     - assets/icons/icon_avatar.png
     - assets/icons/add_friend.png
     - assets/icons/close_whitebold.png
 
+    - assets/images/title_profile.png
     - assets/images/welcome_background.png
     - assets/images/button_challenge.png
     - assets/images/button_join.png
@@ -84,6 +89,8 @@ flutter:
     - assets/images/button_quiz.png
     - assets/images/button_joinclass.png
     - assets/images/whale_image.png
+    - assets/images/default_image.png
+    - assets/icons/check_whitebold.png
 
     - assets/images/title_challenge.png
     - assets/images/title_home.png

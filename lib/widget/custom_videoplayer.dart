@@ -5,13 +5,17 @@ class CustomVideoPlayer extends StatefulWidget {
   final String selectedUrl;
   final PreferredSizeWidget appBar;
   final Function callBackVideoFinished;
+  final bool autoPlay;
+  final bool looping;
 
   CustomVideoPlayer({
     Key key,
     @required this.selectedUrl,
     this.appBar,
     this.callBackVideoFinished,
-  })  : assert(selectedUrl != null),
+    this.autoPlay = false,
+    this.looping = false,
+  })  : assert(selectedUrl != null && autoPlay != null && looping != null),
         assert(selectedUrl.length != 0),
         super(key: key);
 
@@ -48,8 +52,12 @@ class CustomVideoPlayerState extends State<CustomVideoPlayer> {
     _controller = VideoPlayerController.network(widget.selectedUrl)
       ..addListener(_listener)
       ..setVolume(1.0)
-      ..initialize()
-      ..play();
+      ..setLooping(widget.looping)
+      ..initialize();
+
+    if (widget.autoPlay) {
+      _controller.play();
+    }
   }
 
   void playPauseVideo() {

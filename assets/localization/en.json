@@ -4,16 +4,22 @@
   "ok": "OK",
 
   "feed": "Nhà",
-  "lesson": "Bài học",
-  "challenge": "Thử thách",
-  "friend": "Bạn bè",
+  "lesson": "Bài Học",
+  "challenge": "Thử Thách",
+  "friend": "Bạn Bè",
   "game": "Game",
-  "profile": "Thông tin cá nhân",
+  "profile": "Thông Tin Cá Nhân",
   "search": "Tìm Kiếm",
   "searchHint": "Tìm kiếm thông tin",
+  "follow": "Theo dõi",
+  "unFollow": "Bỏ theo dõi",
+
+  "exitApp": "Em muốn thoát ứng dụng phải không?",
+  "yes": "Đồng ý",
+  "no": "Không",
 
   "content": "Nội Dung",
-  "lessonWarn": "Con phải xem hết nội dung video để nhận những đồng xu nhé ^^!",
+  "lessonWarn": "Em phải xem hết nội dung thước phim để nhận những đồng xu này nhé ^^",
   "receiveCoins": "Nhận Xu",
-  "receiveCoinsSuccessfully": "Con đã nhận xu thành công rồi nhé ^^"
+  "receiveCoinsSuccessfully": "Chúc mừng em đã hoàn thành thước phim bài học, những đồng xu này chính là phần thưởng dành cho em :D"
 }

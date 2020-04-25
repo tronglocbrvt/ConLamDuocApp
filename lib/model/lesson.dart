@@ -10,6 +10,6 @@ class Lesson extends MapperObject {
   bool isActive;
   String lessonField;
   String thumbnailImageUrl;
-  String webUrl;
+  String videoUrl;
   DateTime createdAt;
 }

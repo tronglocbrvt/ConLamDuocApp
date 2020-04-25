@@ -1,8 +1,8 @@
 import 'package:conlamduoc/manager/raw_data_manager.dart';
 import 'package:conlamduoc/model/lesson.dart';
 import 'package:conlamduoc/page/profile/profile_page.dart';
-import 'package:conlamduoc/widgets/loading_dot.dart';
-import 'package:conlamduoc/widgets/main_lesson.dart';
+import 'package:conlamduoc/widget/loading_dot.dart';
+import 'package:conlamduoc/widget/main_lesson.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -23,10 +23,10 @@ class _LessonPageState extends State<LessonPage> {
     super.initState();
     _isLoading = true;
     lessonList = List();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _getNotificationList());
+    WidgetsBinding.instance.addPostFrameCallback((_) => _getLessonList());
   }
 
-  void _getNotificationList() {
+  void _getLessonList() {
     if (!_isLoading) {
       setState(() {
         _isLoading = true;
@@ -63,46 +63,40 @@ class _LessonPageState extends State<LessonPage> {
           ),
         ),
       ),
-      backgroundColor: R.colors.lightGreenColor,
+      backgroundColor: R.colors.appBackground,
       body: (_isLoading
           ? LoadingDotStyle02()
-          : Container(
-              margin: EdgeInsets.only(
-                left: 10,
-                right: 10,
-              ),
-              child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: lessonList.length,
-                itemBuilder: (BuildContext ctxt, int index) {
-                  Lesson element = lessonList[index];
-                  int id = element.id;
-                  String title = element.nameLesson;
-                  String content = element.content;
-                  int coins = element.coins;
-                  String lessonField = element.lessonField;
-                  String thumbnailImageUrl = element.thumbnailImageUrl;
-                  String webUrl = element.webUrl;
+          : ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: lessonList.length,
+              itemBuilder: (BuildContext ctxt, int index) {
+                Lesson element = lessonList[index];
+                int id = element.id;
+                String title = element.nameLesson;
+                String content = element.content;
+                int coins = element.coins;
+                String lessonField = element.lessonField;
+                String thumbnailImageUrl = element.thumbnailImageUrl;
+                String webUrl = element.videoUrl;
 
-                  return Container(
-                    margin: EdgeInsets.only(
-                      top: 15,
-                      bottom: (index == lessonList.length - 1
-                          ? 15
-                          : 0),
-                    ),
-                    child: MainLesson(
-                      id: id,
-                      content: content,
-                      thumbnailImageUrl: thumbnailImageUrl,
-                      title: title,
-                      coins: coins,
-                      lessonField: lessonField,
-                      webUrl: webUrl,
-                    ),
-                  );
-                },
-              ),
+                return Container(
+                  margin: EdgeInsets.only(
+                    top: 15,
+                    bottom: (index == lessonList.length - 1 ? 15 : 0),
+                    left: 15,
+                    right: 15,
+                  ),
+                  child: MainLesson(
+                    id: id,
+                    content: content,
+                    thumbnailImageUrl: thumbnailImageUrl,
+                    title: title,
+                    coins: coins,
+                    lessonField: lessonField,
+                    webUrl: webUrl,
+                  ),
+                );
+              },
             )),
     );
 

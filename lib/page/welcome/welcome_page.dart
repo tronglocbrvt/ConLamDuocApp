@@ -1,5 +1,7 @@
 import 'package:conlamduoc/core/helper.dart';
 import 'package:conlamduoc/page/app/app_page.dart';
+import 'package:conlamduoc/page/signup/signup_page.dart';
+import 'package:conlamduoc/page/forget_password/forget_pass_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -24,110 +26,89 @@ class WelcomePage extends StatelessWidget {
               height: R.appRatio.deviceHeight,
               fit: BoxFit.cover,
             ),
-            Column(children: <Widget>[
-              SizedBox(
-                  height: R.appRatio.appWidth300 - R.appRatio.appSpacing20),
-              Container(
-                width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50 * 2),
-                margin: EdgeInsets.only(left: R.appRatio.appSpacing45),
-                child: Text("Tên đăng nhập"),
-              ),
-              SizedBox(
-                height: R.appRatio.appSpacing5,
-              ),
-              Container(
-                padding: EdgeInsets.only(
-                    left: R.appRatio.appSpacing50,
-                    right: R.appRatio.appSpacing50),
-                child: TextField(
-                  controller: _usernameController,
-                  decoration: new InputDecoration(
-                      contentPadding:
-                          EdgeInsets.only(left: R.appRatio.appSpacing25),
-                      border: new OutlineInputBorder(
-                        borderRadius: const BorderRadius.all(
-                          const Radius.circular(50.0),
-                        ),
-                      ),
-                      filled: true,
-                      hintStyle: new TextStyle(color: Colors.grey[800]),
-                      fillColor: Colors.white),
-                ),
-              ),
-              SizedBox(
-                height: R.appRatio.appSpacing15,
-              ),
-              Container(
-                width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50 * 2),
-                margin: EdgeInsets.only(left: R.appRatio.appSpacing45),
-                child: Text("Mật khẩu"),
-              ),
-              SizedBox(
-                height: R.appRatio.appSpacing5,
-              ),
-              Container(
-                padding: EdgeInsets.only(
-                    left: R.appRatio.appSpacing50,
-                    right: R.appRatio.appSpacing50),
-                child: TextField(
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: new InputDecoration(
-                      contentPadding:
-                          EdgeInsets.only(left: R.appRatio.appSpacing25),
-                      border: new OutlineInputBorder(
-                        borderRadius: const BorderRadius.all(
-                          const Radius.circular(50.0),
-                        ),
-                      ),
-                      filled: true,
-                      hintStyle: new TextStyle(color: Colors.grey[800]),
-                      fillColor: Colors.white),
-                ),
-              ),
-              SizedBox(
-                height: R.appRatio.appSpacing20,
-              ),
-              Container(
-                width: R.appRatio.deviceWidth -
-                    (R.appRatio.appSpacing50 * 2) -
-                    R.appRatio.appSpacing45,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    GestureDetector(
-                      child: Text(
-                        "Tạo tài khoản mới",
-                        style: TextStyle(color: Colors.lightBlue),
-                      ),
+            Column(
+                children: <Widget>[
+                  SizedBox(height: R.appRatio.appWidth300 - R.appRatio.appSpacing20),
+                  Container(
+                    width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50*2),
+                    margin: EdgeInsets.only(left: R.appRatio.appSpacing45),
+                    child: Text("Tên đăng nhập"),
+                  ),
+                  SizedBox(height: R.appRatio.appSpacing5,),
+                  Container(
+                    padding: EdgeInsets.only(left: R.appRatio.appSpacing50, right: R.appRatio.appSpacing50),
+                    child: TextField(
+                      controller: _usernameController,
+                      decoration: new InputDecoration(
+                          contentPadding: EdgeInsets.only(left: R.appRatio.appSpacing25),
+                          border: new OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                              const Radius.circular(50.0),
+                            ),
+                          ),
+                          filled: true,
+                          hintStyle: new TextStyle(color: Colors.grey[800]),
+                          fillColor: Colors.white),
                     ),
-                    GestureDetector(
-                      child: Text(
-                        "Quên mật khẩu?",
-                        style: TextStyle(color: Colors.lightBlue),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: R.appRatio.appSpacing20,
-              ),
-              GestureDetector(
-                child: Container(
-                  width: R.appRatio.appWidth200,
-                  child: Image.asset(R.images.button_login),
-                ),
-                onTap: () => _singIn(context),
-              )
-            ])
+                  ),
+                  SizedBox(height: R.appRatio.appSpacing15,),
+                  Container(
+                    width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50*2),
+                    margin: EdgeInsets.only(left: R.appRatio.appSpacing45),
+                    child: Text("Mật khẩu"),
+                  ),
+                  SizedBox(height: R.appRatio.appSpacing5,),
+                  Container(
+                    padding: EdgeInsets.only(left: R.appRatio.appSpacing50, right: R.appRatio.appSpacing50),
+                    child: TextField(
+                      controller: _passwordController,
+                      obscureText: true,
+                      decoration: new InputDecoration(
+                          contentPadding: EdgeInsets.only(left: R.appRatio.appSpacing25),
+                          border: new OutlineInputBorder(
+                            borderRadius: const BorderRadius.all(
+                              const Radius.circular(50.0),
+                            ),
+                          ),
+                          filled: true,
+                          hintStyle: new TextStyle(color: Colors.grey[800]),
+                          fillColor: Colors.white),
+                    ),
+                  ),
+                  SizedBox(height: R.appRatio.appSpacing20,),
+                  Container(
+                    width: R.appRatio.deviceWidth - (R.appRatio.appSpacing50*2) - R.appRatio.appSpacing45,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: ()=>_signUp(context),
+                          child: Text("Tạo tài khoản mới", style: TextStyle(color: Colors.lightBlue),),
+                        ),
+                        GestureDetector(
+                          onTap: (){pushPage(context, ForgetPasswordPage());},
+                          child: Text("Quên mật khẩu?", style: TextStyle(color: Colors.lightBlue),),
+                        )
+                      ],),
+                  ),
+                  SizedBox(height: R.appRatio.appSpacing20,),
+                  GestureDetector(
+                    child: Container(
+                      width: R.appRatio.appWidth200,
+                      child: Image.asset(R.images.button_login),
+                    ),
+                    onTap: ()=>_singIn(context),
+                  )
+                ]
+            )
+
           ],
         ),
       ),
     );
   }
 
-  _singIn(BuildContext context) {
+  _singIn(BuildContext context){
     // print(RawDataManager.userList[0].username);
     // if((_usernameController.text == RawDataManager.userList[0].username)
     // ||(_usernameController.text == RawDataManager.userList[1].username)
@@ -137,6 +118,13 @@ class WelcomePage extends StatelessWidget {
     //   showAlert(context, R.strings.notice, "Đăng nhập không thành công", null);
 
     //Debug
+    print(RawDataManager.userList[0].username);
     pushPage(context, AppPage());
+
   }
+
+  _signUp(BuildContext context){
+    pushPage(context, SignUpPage());
+  }
+
 }

@@ -42,5 +42,3 @@ class User extends MapperObject {
   }
   
 }
-
-

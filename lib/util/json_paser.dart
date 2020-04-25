@@ -185,7 +185,7 @@ DateTime _castToDateTime(dynamic val) {
     if (val > 1000000000000) {
       val = val ~/ 1000;
     }
-    return DateTime.fromMillisecondsSinceEpoch(val * 1000); // server return secount. but fromMillisecondsSinceEpoch used millisecond => x 1000
+    return DateTime.fromMillisecondsSinceEpoch(val * 1000).toUtc(); // server return secount. but fromMillisecondsSinceEpoch used millisecond => x 1000
   }
 
   if (val is DateTime) {

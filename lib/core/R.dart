@@ -19,9 +19,9 @@ class R {
     Size size = MediaQuery.of(context).size;
     double textScaleFactor = MediaQuery.of(context).textScaleFactor;
     double devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
-    appRatio.setUpAppRatio(size.width, size.height, devicePixelRatio, textScaleFactor);
+    appRatio.setUpAppRatio(
+        size.width, size.height, devicePixelRatio, textScaleFactor);
   }
-
 }
 
 class AppRatio {
@@ -29,63 +29,63 @@ class AppRatio {
     + This is private variables.
     + Figma design information.
   */
-  final double _figmaDeviceWidth                = 411;
-  final double _figmaDeviceHeight               = 731;
+  final double _figmaDeviceWidth = 411;
+  final double _figmaDeviceHeight = 731;
 
-  final double _figmaFontSize12                 = 12;
-  final double _figmaFontSize14                 = 14;
-  final double _figmaFontSize16                 = 16;
-  final double _figmaFontSize18                 = 18;
-  final double _figmaFontSize20                 = 20;
-  final double _figmaFontSize22                 = 22;
-  final double _figmaFontSize24                 = 24;
-  final double _figmaFontSize26                 = 26;
-  final double _figmaFontSize28                 = 28;  
+  final double _figmaFontSize12 = 12;
+  final double _figmaFontSize14 = 14;
+  final double _figmaFontSize16 = 16;
+  final double _figmaFontSize18 = 18;
+  final double _figmaFontSize20 = 20;
+  final double _figmaFontSize22 = 22;
+  final double _figmaFontSize24 = 24;
+  final double _figmaFontSize26 = 26;
+  final double _figmaFontSize28 = 28;
 
-  final double _figmaWidth70                    = 70;
-  final double _figmaWidth80                    = 80;
-  final double _figmaWidth150                    = 150;
-  final double _figmaWidth181                   = 181;
-  final double _figmaWidth200                   = 200;
-  final double _figmaWidth250                   = 250;
-  final double _figmaWidth300                   = 300;
-  final double _figmaWidth381                   = 381;
+  final double _figmaWidth70 = 70;
+  final double _figmaWidth80 = 80;
+  final double _figmaWidth150 = 150;
+  final double _figmaWidth181 = 181;
+  final double _figmaWidth200 = 200;
+  final double _figmaWidth250 = 250;
+  final double _figmaWidth300 = 300;
+  final double _figmaWidth381 = 381;
 
-  final double _figmaHeight25                   = 25;
-  final double _figmaHeight30                   = 30;
-  final double _figmaHeight40                   = 40;
-  final double _figmaHeight50                   = 50;
-  final double _figmaHeight60                   = 60;
-  final double _figmaHeight70                   = 70;
-  final double _figmaHeight80                   = 80;
-  final double _figmaHeight320                  = 320;
+  final double _figmaHeight25 = 25;
+  final double _figmaHeight30 = 30;
+  final double _figmaHeight40 = 40;
+  final double _figmaHeight50 = 50;
+  final double _figmaHeight60 = 60;
+  final double _figmaHeight70 = 70;
+  final double _figmaHeight80 = 80;
+  final double _figmaHeight320 = 320;
 
-  final double _figmaSpacing5                   = 5;
-  final double _figmaSpacing10                  = 10;
-  final double _figmaSpacing15                  = 15;
-  final double _figmaSpacing20                  = 20;
-  final double _figmaSpacing25                  = 25;
-  final double _figmaSpacing30                  = 30;
-  final double _figmaSpacing35                  = 35;
-  final double _figmaSpacing40                  = 40;
-  final double _figmaSpacing45                  = 45;
-  final double _figmaSpacing50                  = 50;
+  final double _figmaSpacing5 = 5;
+  final double _figmaSpacing10 = 10;
+  final double _figmaSpacing15 = 15;
+  final double _figmaSpacing20 = 20;
+  final double _figmaSpacing25 = 25;
+  final double _figmaSpacing30 = 30;
+  final double _figmaSpacing35 = 35;
+  final double _figmaSpacing40 = 40;
+  final double _figmaSpacing45 = 45;
+  final double _figmaSpacing50 = 50;
 
-  final double _figmaIconSize15                 = 15;
-  final double _figmaIconSize18                 = 18;
-  final double _figmaIconSize20                 = 20;
-  final double _figmaIconSize25                 = 25;
-  final double _figmaIconSize30                 = 30;
-  final double _figmaIconSize35                 = 35;
-  final double _figmaIconSize40                 = 40;
+  final double _figmaIconSize15 = 15;
+  final double _figmaIconSize18 = 18;
+  final double _figmaIconSize20 = 20;
+  final double _figmaIconSize25 = 25;
+  final double _figmaIconSize30 = 30;
+  final double _figmaIconSize35 = 35;
+  final double _figmaIconSize40 = 40;
 
-  final double _figmaAppBarIconSize             = 22;
-  final double _figmaWelcomPageLogoTextSize     = 160;
-  final double _figmaDropDownImageSquareSize    = 40;
-  final double _figmaDropDownArrowIconSize      = 32;
+  final double _figmaAppBarIconSize = 22;
+  final double _figmaWelcomPageLogoTextSize = 160;
+  final double _figmaDropDownImageSquareSize = 40;
+  final double _figmaDropDownArrowIconSize = 32;
 
-  final double _figmaAvatarSize130              = 130;
-  final double _figmaAvatarSize150              = 150;
+  final double _figmaAvatarSize130 = 130;
+  final double _figmaAvatarSize150 = 150;
 
   /* 
     + This is public variables.
@@ -164,23 +164,21 @@ class AppRatio {
   }
 
   double _computeHeight(num figmaObjSize) {
-    double result = (this.deviceHeight / this._figmaDeviceHeight) * figmaObjSize;  
+    double result =
+        (this.deviceHeight / this._figmaDeviceHeight) * figmaObjSize;
     return (result <= figmaObjSize)
-            ? result : 
-            (
-              (result <= figmaObjSize + 10) 
-              ? figmaObjSize : 
-              (
-                (result <= figmaObjSize + 20) ? (figmaObjSize + 10) : (figmaObjSize + 15)
-              )
-            );
+        ? result
+        : ((result <= figmaObjSize + 10)
+            ? figmaObjSize
+            : ((result <= figmaObjSize + 20)
+                ? (figmaObjSize + 10)
+                : (figmaObjSize + 15)));
   }
 
   double _computeFontSize(double desiredFontSize) {
-    double result =  ((this.textScaleFactor == 1.0) ? 
-                      (_computeWidth(desiredFontSize)) : 
-                      (desiredFontSize - (desiredFontSize * (this.textScaleFactor - 1.0)))
-                    );
+    double result = ((this.textScaleFactor == 1.0)
+        ? (_computeWidth(desiredFontSize))
+        : (desiredFontSize - (desiredFontSize * (this.textScaleFactor - 1.0))));
     return (result > desiredFontSize) ? desiredFontSize : result;
   }
 
@@ -189,7 +187,8 @@ class AppRatio {
     + This is used when initializing application.
     + Set up app ratio.
   */
-  void setUpAppRatio(double deviceWidth, double deviceHeight, double devicePixelRatio, double textScaleFactor) {
+  void setUpAppRatio(double deviceWidth, double deviceHeight,
+      double devicePixelRatio, double textScaleFactor) {
     // Store device width and height
     this.deviceWidth = deviceWidth;
     this.deviceHeight = deviceHeight;
@@ -251,8 +250,10 @@ class AppRatio {
 
     // Find size of other things
     appAppBarIconSize = _computeWidth(this._figmaAppBarIconSize);
-    appWelcomPageLogoTextSize = _computeWidth(this._figmaWelcomPageLogoTextSize);
-    appDropDownImageSquareSize = _computeWidth(this._figmaDropDownImageSquareSize);
+    appWelcomPageLogoTextSize =
+        _computeWidth(this._figmaWelcomPageLogoTextSize);
+    appDropDownImageSquareSize =
+        _computeWidth(this._figmaDropDownImageSquareSize);
     appDropDownArrowIconSize = _computeWidth(this._figmaDropDownArrowIconSize);
 
     // Find size of avatars
@@ -268,7 +269,7 @@ class AppRatio {
 }
 
 class _Color {
-    // Gradient color
+  // Gradient color
   final Gradient uiGradient = LinearGradient(colors: [
     Color(0xFFFC8800),
     Color(0xFFF26B30),
@@ -288,41 +289,43 @@ class _Color {
       - final Color pinkRed = Color(0xFFEE4C3E);
       - final Color blue = Color(0xFF03318C);
   */
-  
+
   // Official/Main/Common color of app
-  Color majorOrange                   = Color(0xFFFD632C);
-  Color blurMajorOrange               = Color.fromRGBO(253, 99, 44, 0.5);
-  Color grayABABAB                    = Color(0xFFABABAB);
-  Color oldYellow                     = Color(0xFFF9C86A);
+  Color greenColor = Color(0xFFC6FF59);
+  Color lightGreenColor = Color(0xFFF1FFD6);
+  Color gray808080 = Color(0xFF808080);
+  Color grayABABAB = Color(0xFFABABAB);
+  Color oldYellow = Color(0xFFF9C86A);
+  Color strongOrange = Color(0xFFFD632C);
+  Color blurMajorOrange = Color.fromRGBO(253, 99, 44, 0.5);
+  Color lightOrange = Color(0xFFFFC300);
+  Color strongBlue = Color(0xFF173F5F);
+  Color nicePink = Color(0xFFFFA09E);
 
-  // Default is Light theme
-  // #FD632C = RGB(253, 99, 44)
-  // #FFEBDE = RGB(255, 235, 222)
-  // #000000 = RGB(0, 0, 0)
-  Color labelText                     = Color(0xFFFD632C);
-  Color contentText                   = Color(0xFF000000);
-  Color orangeNoteText                = Color(0xFFFD632C);
-  Color normalNoteText                = Color(0xFF808080);
-  Color lighterNormalNoteText         = Color(0xFFABABAB);
-  Color appBackground                 = Color(0xFFFFFFFF);
-  Color boxBackground                 = Color(0xFFFFFFFF);
-  Color sectionBackgroundLayer        = Color.fromRGBO(255, 235, 222, 0.2);
-  Color btnShadow                     = Color.fromRGBO(0, 0, 0, 0.5);
-  Color textShadow                    = Color.fromRGBO(0, 0, 0, 0.25);
-  Color tabLayer                      = Color.fromRGBO(253, 99, 44, 0.1);
-  Color discussionLayer               = Color.fromRGBO(253, 99, 44, 0.2);
-  Color notiLayer                     = Color.fromRGBO(253, 99, 44, 0.2);
+  Color contentText = Color(0xFF000000);
+  Color orangeNoteText = Color(0xFFFD632C);
+  Color normalNoteText = Color(0xFF808080);
+  Color lighterNormalNoteText = Color(0xFFABABAB);
+  Color appBackground = Color(0xFFFFFFFF);
+  Color boxBackground = Color(0xFFFFFFFF);
+  Color sectionBackgroundLayer = Color.fromRGBO(255, 235, 222, 0.2);
+  Color btnShadow = Color.fromRGBO(0, 0, 0, 0.5);
+  Color textShadow = Color.fromRGBO(0, 0, 0, 0.25);
+  Color tabLayer = Color.fromRGBO(253, 99, 44, 0.1);
+  Color discussionLayer = Color.fromRGBO(253, 99, 44, 0.2);
+  Color notiLayer = Color.fromRGBO(253, 99, 44, 0.2);
 
-  Color navigationBar                 = Color(0xFFC6FF59);
+  Color navigationBar = Color(0xFFC6FF59);
 }
 
 class _MyIcons {
- final String appbarFeed = 'assets/icons/home.png';
- final String appbarLesson = 'assets/icons/lesson.png';
- final String appbarChallenge = 'assets/icons/challenge.png';
- final String appbarGame = 'assets/icons/game.png';
- final String appbarProfile = 'assets/icons/profile.png';
- final String appbarSearch = 'assets/icons/search.png';
+  final String appbarFeed = 'assets/icons/home.png';
+  final String appbarLesson = 'assets/icons/lesson.png';
+  final String appbarChallenge = 'assets/icons/challenge.png';
+  final String appbarGame = 'assets/icons/game.png';
+  final String appbarProfile = 'assets/icons/profile.png';
+  final String appbarSearch = 'assets/icons/search.png';
+  final String appbarCloseWhiteBold = 'assets/icons/close_whitebold.png';
 }
 
 class _Images {
@@ -334,15 +337,16 @@ class _Images {
   final String button_like_nocolor = "assets/images/button_like_nocolor.png";
   final String button_login = "assets/images/button_login.png";
   final String button_quiz = "assets/images/button_quiz.png";
+  final String button_joinclass = "assets/images/button_joinclass.png";
   final String title_challenge = "assets/images/title_challenge.png";
   final String title_game = "assets/images/title_game.png";
   final String title_hello = "assets/images/title_hello.png";
   final String title_home = "assets/images/title_home.png";
   final String title_lesson = "assets/images/title_lesson.png";
   final String title_profile = "assets/images/title_profile.png";
+
+  final String whale_image = "assets/images/whale_image.png";
 }
-
-
 
 @reflector
 class Strings {
@@ -355,8 +359,13 @@ class Strings {
   String challenge;
   String game;
   String profile;
+  String search;
+  String hintFriendName;
+
+  String content;
+  String lessonWarn;
+  String receiveCoins;
+  String receiveCoinsSuccessfully;
 }
 
-class Styles {
-  
-}
+class Styles {}

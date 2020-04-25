@@ -7,20 +7,23 @@ import 'main.reflectable.dart';
 import 'package:flutter/services.dart';
 import 'core/R.dart';
 
-
 void main() {
   ErrorWidget.builder = (FlutterErrorDetails details) => Container();
   initializeReflectable();
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(ConLamDuocApp());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((res) {
+    runApp(ConLamDuocApp());
+  });
 }
 
 GlobalKey<_ConLamDuocAppState> _appGlobalkey = GlobalKey();
-bool _needInit = true;
 
 class ConLamDuocApp extends StatefulWidget {
   final Widget child;
+
   ConLamDuocApp({this.child}) : super(key: _appGlobalkey);
+
   @override
   _ConLamDuocAppState createState() => _ConLamDuocAppState();
 }
@@ -40,7 +43,7 @@ class _ConLamDuocAppState extends State<ConLamDuocApp> {
       title: 'Con làm được',
       key: key,
       theme: ThemeData(
-        primaryColor: Color(0xFFFD632C),
+        primaryColor: Color(0xFFC6FF59),
       ),
       home: SplashPage(),
     );

@@ -69,6 +69,7 @@ class _AppPageState extends State<AppPage> {
     return new WillPopScope(
       onWillPop: () async => false,
       child: CupertinoPageScaffold(
+        resizeToAvoidBottomInset: false,
         child: CupertinoTabScaffold(
           tabBar: CupertinoTabBar(
             activeColor: R.colors.blurMajorOrange,

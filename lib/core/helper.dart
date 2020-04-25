@@ -41,6 +41,7 @@ Future<T> showAlert<T>(BuildContext context, String title, String message, List<
       )
     ];
   }
+
   return showCupertinoDialog<T>(
       context: context,
       builder: (context) {
@@ -419,7 +420,7 @@ class _FullPageRoute<T> extends PageRoute<T> {
   ) {
     if (routeType == RouteType.present) {
       return CupertinoFullscreenDialogTransition(
-        animation: animation,
+        // animation: animation,
         child: child,
       );
     } else {

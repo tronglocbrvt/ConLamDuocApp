@@ -1,13 +1,18 @@
 {
+  "error": "Lỗi",
+  "notice": "Thông báo",
+  "ok": "OK",
 
-    "error": "Lỗi",
-    "notice": "Thông báo",
-    "ok": "OK",
+  "feed": "Nhà",
+  "lesson": "Bài học",
+  "challenge": "Thử thách",
+  "game": "Game",
+  "profile": "Thông tin cá nhân",
+  "search": "Tìm Kiếm",
+  "hintFriendName": "Tìm kiếm theo tên bạn bè",
 
-    "feed": "Nhà",
-    "lesson":"Bài học",
-    "challenge": "Thử thách",
-    "game":"Game",
-    "profile": "Thông tin cá nhân"
-    
+  "content": "Nội Dung",
+  "lessonWarn": "Con phải xem hết nội dung video để nhận những đồng xu nhé ^^!",
+  "receiveCoins": "Nhận Xu",
+  "receiveCoinsSuccessfully": "Con đã nhận xu thành công rồi nhé ^^"
 }

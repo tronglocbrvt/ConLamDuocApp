@@ -55,7 +55,7 @@ class _CustomAlertDialog extends StatelessWidget {
                 topLeft: Radius.circular(radius),
                 topRight: Radius.circular(radius),
               ),
-              color: R.colors.strongBlue,
+              color: R.colors.green,
             ),
             child: Text(
               this.title,
@@ -63,7 +63,7 @@ class _CustomAlertDialog extends StatelessWidget {
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                color: Colors.white,
+                color: R.colors.strongBlue,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
@@ -94,7 +94,7 @@ class _CustomAlertDialog extends StatelessWidget {
               FlatButton(
                 padding: EdgeInsets.all(0),
                 textColor: Colors.white,
-                splashColor: R.colors.lightBlue,
+                splashColor: R.colors.lightGreen,
                 child: Container(
                   width: 80,
                   height: 40,
@@ -113,7 +113,7 @@ class _CustomAlertDialog extends StatelessWidget {
                   ? FlatButton(
                       padding: EdgeInsets.all(0),
                       textColor: Colors.white,
-                      splashColor: R.colors.lightBlue,
+                      splashColor: R.colors.lightGreen,
                       child: Container(
                         width: 80,
                         height: 40,

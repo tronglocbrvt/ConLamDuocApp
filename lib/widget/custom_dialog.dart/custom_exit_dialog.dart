@@ -37,10 +37,10 @@ class _CustomExitDialog extends StatelessWidget {
             height: 15,
           ),
           UIButton(
-            color: R.colors.strongBlue,
+            color: R.colors.green,
             text: R.strings.yes,
             textSize: 16,
-            textColor: Colors.white,
+            textColor: R.colors.strongBlue,
             fontWeight: FontWeight.bold,
             enableShadow: false,
             height: 40,

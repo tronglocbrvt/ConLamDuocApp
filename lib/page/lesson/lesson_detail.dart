@@ -101,7 +101,7 @@ class _LessonDetailState extends State<LessonDetail> {
                     "Xu: ${widget.coins}",
                     textScaleFactor: 1.0,
                     style: TextStyle(
-                      color: R.colors.oldYellow,
+                      color: R.colors.strongOrange,
                       fontWeight: FontWeight.normal,
                       fontSize: 16,
                     ),
@@ -113,7 +113,7 @@ class _LessonDetailState extends State<LessonDetail> {
                     "Loại: ${widget.lessonField}",
                     textScaleFactor: 1.0,
                     style: TextStyle(
-                      color: R.colors.oldYellow,
+                      color: R.colors.strongOrange,
                       fontWeight: FontWeight.normal,
                       fontSize: 16,
                     ),
@@ -181,7 +181,7 @@ class _LessonDetailState extends State<LessonDetail> {
                 onTap: () async {
                   await showCustomAlertDialog(
                     context,
-                    title: R.strings.content,
+                    title: R.strings.notice,
                     content: R.strings.receiveCoinsSuccessfully,
                     firstButtonText: R.strings.ok,
                     firstButtonFunction: () => pop(context),

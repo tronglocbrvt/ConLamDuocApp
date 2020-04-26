@@ -102,6 +102,9 @@ flutter:
     - assets/images/button_joinclass.png
     - assets/images/whale_image.png
     - assets/images/default_image.png
+    - assets/images/LichSu_image.jpg
+    - assets/images/LePhep_image.png
+    - assets/images/pencil_image.jpg
     - assets/icons/check_whitebold.png
 
     - assets/images/title_challenge.png

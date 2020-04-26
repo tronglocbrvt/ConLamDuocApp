@@ -108,8 +108,8 @@ class _GamePlayState extends State<GamePlay> {
                     children: <Widget>[
                       correct!=null? correct? 
                       
-                      Image.asset(R.images.game_correct, width: 200,): 
-                      Image.asset(R.images.game_inCorect, width: 200):Container(),
+                      Image.asset(R.images.game_correct, width: 200,height: 150): 
+                      Image.asset(R.images.game_inCorect, width: 200,height: 150):Container(height: 150,),
                       SizedBox(height: 40,),
                       _buildQuestion(0),
                       SizedBox(height: 80,),

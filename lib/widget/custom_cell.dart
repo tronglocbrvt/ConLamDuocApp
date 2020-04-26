@@ -32,6 +32,7 @@ class CustomCell extends StatelessWidget {
   final bool enableFFButton;
   final bool isFollowButton;
   final Function pressFFButton;
+  final Function pressFFButton2;
 
   // + 3 dots
   final bool enablePopupMenuButton;
@@ -65,6 +66,7 @@ class CustomCell extends StatelessWidget {
     this.enableFFButton = false,
     this.isFollowButton = true,
     this.pressFFButton,
+    this.pressFFButton2,
     this.enablePopupMenuButton = false,
     this.customPopupMenu,
     this.enableCloseButton = false,
@@ -81,7 +83,6 @@ class CustomCell extends StatelessWidget {
             child: Row(
               children: <Widget>[
               Container(
-                width: 0,
                 child: FlatButton(
                 child: Icon(Icons.camera_alt,size: 25,),
                 onPressed: () {
@@ -90,12 +91,11 @@ class CustomCell extends StatelessWidget {
                   }
                 },)
               ),
-            SizedBox(width: 20,),
             FlatButton(
               child: Icon(Icons.image,size: 25,),
               onPressed: () {
                 if (this.pressFFButton != null) {
-                  this.pressFFButton();
+                  this.pressFFButton2();
                 }
               },
             )

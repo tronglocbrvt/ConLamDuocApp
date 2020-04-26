@@ -1,14 +1,19 @@
+import 'dart:io';
+
 import 'package:chewie/chewie.dart';
 import 'package:conlamduoc/core/R.dart';
 import 'package:conlamduoc/core/helper.dart';
+import 'package:conlamduoc/manager/raw_data_manager.dart';
 import 'package:conlamduoc/page/profile/profile_page.dart';
 import 'package:conlamduoc/util/image_cache_manager.dart';
 import 'package:conlamduoc/widget/avatar_view.dart';
 import 'package:conlamduoc/widget/custom_cell.dart';
+import 'package:conlamduoc/widget/custom_dialog.dart/custom_alert_dialog.dart';
 import 'package:conlamduoc/widget/ui_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:video_player/video_player.dart';
 
@@ -48,19 +53,20 @@ class _ChallengeUploadState extends State<ChallengeUpload> {
   static ChewieController chewieController;
   bool _isLiked;
 
+  File image;
+  File video;
+
+  bool isTakeImg;
   @override
   void initState() {
     super.initState();
+    isTakeImg = _getChallengeType();
+    print("istake "+isTakeImg.toString());
   }
 
-  void _updateIsLiked() {
-    setState(() {
-      _isLiked = !_isLiked;
-    });
-  }
 
-  Widget _buildUrlContent() {
-    if (widget.imageUrl.length != 0) {
+  Widget _buildContent() {
+    if (image != null) {
       return Container(
         constraints: BoxConstraints(maxHeight: 350),
         decoration: BoxDecoration(
@@ -69,15 +75,12 @@ class _ChallengeUploadState extends State<ChallengeUpload> {
             width: 2,
           ),
         ),
-        child: ImageCacheManager.getImage(
-          url: widget.imageUrl,
-          fit: BoxFit.cover,
-        ),
+        child: Image.file(image),
       );
     }
 
-    if (widget.videoUrl.length != 0) {
-      videoPlayerController = VideoPlayerController.network(widget.videoUrl);
+    if (video != null) {
+      videoPlayerController = VideoPlayerController.file(video);
       chewieController = ChewieController(
         videoPlayerController: videoPlayerController,
         aspectRatio: 16 / 9,
@@ -120,103 +123,15 @@ class _ChallengeUploadState extends State<ChallengeUpload> {
     super.dispose();
   }
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Column(
-  //     mainAxisSize: MainAxisSize.min,
-  //     crossAxisAlignment: CrossAxisAlignment.stretch,
-  //     mainAxisAlignment: MainAxisAlignment.start,
-  //     children: [
-  //       CustomCell(
-  //         avatarView: AvatarView(
-  //           avatarImageURL: widget.avatarUrl,
-  //           avatarImageSize: 60,
-  //           avatarBoxBorder: Border.all(
-  //             width: 2,
-  //             color: R.colors.oldYellow,
-  //           ),
-  //           pressAvatarImage: () {
-  //             // TODO: Code here
-  //             print("[MAIN FEED] Pressing avatar image");
-  //           },
-  //         ),
-  //         title: widget.fullName,
-  //         subTitle: _processChallengeName(),
-  //         subTitleStyle: TextStyle(
-  //           color: R.colors.strongOrange,
-  //           fontSize: 14,
-  //         ),
-  //         pressInfo: () {
-  //           // TODO: Code here
-  //           print("[MAIN FEED] Pressing info");
-  //         },
-  //         // firstAddedTitleIconURL: R.myIcons.calendar,
-  //         // firstAddedTitle:
-  //         //     DateFormat("dd/MM/yyyy HH:mm").format(widget.createdAt),
-  //         // firstAddedTitleIconSize: 12,
-  //         // secondAddedTitleIconURL: R.myIcons.coin,
-  //         // secondAddedTitle: widget.challengeCoins.toString(),
-  //         // secondAddedTitleIconSize: 12,
-  //       ),
-  //       SizedBox(
-  //         height: 10,
-  //       ),
-  //       Padding(
-  //         padding: EdgeInsets.only(left: 5, right: 5),
-  //         child: Text(
-  //           widget.content,
-  //           textScaleFactor: 1.0,
-  //           maxLines: 8,
-  //           textAlign: TextAlign.left,
-  //           overflow: TextOverflow.ellipsis,
-  //           style: TextStyle(
-  //             color: Colors.black,
-  //             fontWeight: FontWeight.normal,
-  //             fontSize: 14,
-  //           ),
-  //         ),
-  //       ),
-  //       SizedBox(
-  //         height: 10,
-  //       ),
-  //       _buildUrlContent(),
-  //       SizedBox(
-  //         height: 25,
-  //       ),
-  //       // Row(
-  //       //   mainAxisAlignment: MainAxisAlignment.center,
-  //       //   children: [
-  //       //     UIImageButton(
-  //       //       image: Image.asset(
-  //       //         (_isLiked
-  //       //             ? R.images.button_like_color
-  //       //             : R.images.button_like_nocolor),
-  //       //         fit: BoxFit.contain,
-  //       //       ),
-  //       //       width: 130,
-  //       //       height: 40,
-  //       //       onTap: () => _updateIsLiked(),
-  //       //     ),
-  //       //     UIImageButton(
-  //       //       image: Image.asset(
-  //       //         R.images.button_challenge,
-  //       //         fit: BoxFit.contain,
-  //       //       ),
-  //       //       width: 130,
-  //       //       height: 40,
-  //       //       onTap: () {
-  //       //         // TODO: Code here
-  //       //         print("[MAIN FEED] Pushing page 'challenge in detail'");
-  //       //       },
-  //       //     )
-  //       //   ],
-  //       // ),
-  //       // SizedBox(
-  //       //   height: 10,
-  //       // ),
-  //     ],
-  //   );
-  //}
+  bool _getChallengeType(){
+    bool re = false;
+    RawDataManager.challengeList.forEach((chal){
+      print(widget.challengeId.toString());
+      if (chal.id == widget.challengeId)
+        re = chal.isTakeImg;
+    });
+    return re;
+  }
 
   Widget build(BuildContext context) {
     Widget _buildWidget = Scaffold(
@@ -283,8 +198,24 @@ class _ChallengeUploadState extends State<ChallengeUpload> {
           ),
           enableAddedContent: false,
           enableFFButton: true,
-
+          pressFFButton: (){
+            if (isTakeImg){
+              openCamera(context);
+            }
+            else
+              openCameraRecord(context);
+            },
+          pressFFButton2: (){
+            if (isTakeImg){
+                openSelectPhoto(context);
+              }
+              else
+                openSelectVideo(context);
+            }
+          
         ),
+
+        
         SizedBox(
           height: 10,
         ),
@@ -305,14 +236,26 @@ class _ChallengeUploadState extends State<ChallengeUpload> {
                 fillColor: Colors.white),
           ),
         ),
-        //_buildUrlContent(),
+        image!=null || video!= null? 
+        SizedBox(
+          height: 25,
+        ):Container(),
+        _buildContent(),
         SizedBox(
           height: 25,
         ),
         Padding( 
           padding: EdgeInsets.only(left: 100, right: 100),
           child: FlatButton(
-          onPressed: (){},
+          onPressed: () async {
+            await showCustomAlertDialog(
+                    context,
+                    title: R.strings.notice,
+                    content: "Video của bạn se được kiểm định và upload",
+                    firstButtonText: R.strings.ok,
+                    firstButtonFunction: () => pop(context),
+                  );
+          },
           color: Color(0xFFFFC300),
           shape: RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(20.0),
@@ -337,4 +280,65 @@ class _ChallengeUploadState extends State<ChallengeUpload> {
           return null;
         });
   }
+
+  Future<void> openSelectPhoto(BuildContext context) async{
+    try {
+      var newFile = await ImagePicker.pickImage(source: ImageSource.gallery, maxWidth: 500, maxHeight: 500);
+      print(newFile.toString());
+      if(newFile!=null)
+      {
+        setState(() {
+          image = newFile;
+        });
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  Future<void> openCamera(BuildContext context) async{
+    try {
+      var newFile = await ImagePicker.pickImage(source: ImageSource.camera, maxWidth: 500, maxHeight: 500);
+      print(newFile.toString());
+      if(newFile!=null)
+      {
+        setState(() {
+          image = newFile;
+        });
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  Future<void> openSelectVideo(BuildContext context) async{
+    try {
+      var newFile = await ImagePicker.pickVideo(source: ImageSource.gallery);
+      print(newFile.toString());
+      if(newFile!=null)
+      {
+        setState(() {
+          video = newFile;
+        });
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  Future<void> openCameraRecord(BuildContext context) async{
+    try {
+      var newFile = await ImagePicker.pickVideo(source: ImageSource.camera);
+      print(newFile.toString());
+      if(newFile!=null)
+      {
+        setState(() {
+          video = newFile;
+        });
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+  
 }

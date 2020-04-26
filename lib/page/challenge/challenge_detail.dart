@@ -103,12 +103,4 @@ class ChallengeDetail extends StatelessWidget {
     }
   }
 
-  _goToAppPage(BuildContext context)
-  {
-    //Check logic here
-
-    //Navigate
-    pushPage(context, AppPage());
-  }
-
 }

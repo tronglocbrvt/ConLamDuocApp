@@ -135,10 +135,8 @@ class _MainFeedState extends State<MainFeed> {
 
   @override
   void dispose() {
-    if (widget.videoUrl.length != 0) {
-      videoPlayerController.dispose();
-      chewieController.dispose();
-    }
+    videoPlayerController.dispose();
+    chewieController.dispose();
     super.dispose();
   }
 

@@ -90,9 +90,9 @@ class _SearchPageState extends State<SearchPage> {
       itemCount: userList.length,
       itemBuilder: (BuildContext ctxt, int index) {
         User element = userList[index];
-        String name = element.name;
+        String name = element.fullName;
         String age = (DateTime.now().year - element.birthday.year).toString();
-        String img = element.img != null ? element.img : R.myIcons.avatar;
+        String img = element.avatar != null ? element.avatar : R.myIcons.avatar;
         return Container(
             margin: EdgeInsets.only(
               top: 15,
@@ -188,7 +188,7 @@ class _SearchPageState extends State<SearchPage> {
       });
 
       RawDataManager.userList.forEach((user) {
-        if (tiengviet(user.name)
+        if (tiengviet(user.fullName)
             .toLowerCase()
             .contains(tiengviet(data).toString().toLowerCase()))
           tempUser.add(user);

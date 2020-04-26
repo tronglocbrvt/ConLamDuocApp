@@ -544,10 +544,52 @@ class Strings {
   String searchHint;
   String follow;
   String unFollow;
+  String updateProfileSuccessfully;
+  String dateTimePicker;
+  String datePicker;
+  String info;
+  String login;
+  String createNewAccount;
+  String forgotPassword;
+
+  String fullName;
+  String birthday;
+  String gender;
+  String male;
+  String female;
+  String parentEmail;
+  String parentPhone;
+  String username;
+  String password;
+  String retypePassword;
+  String create;
+  String avatar;
+
+  String january;
+  String february;
+  String march;
+  String april;
+  String may;
+  String june;
+  String july;
+  String august;
+  String september;
+  String october;
+  String november;
+  String december;
+
+  String monday;
+  String tuesday;
+  String wednesday;
+  String thursday;
+  String friday;
+  String saturday;
+  String sunday;
 
   String exitApp;
   String yes;
   String no;
+  String cancel;
 
   String content;
   String lessonWarn;

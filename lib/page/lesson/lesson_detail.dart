@@ -152,7 +152,7 @@ class _LessonDetailState extends State<LessonDetail> {
                     AspectRatio(
                       aspectRatio: 16 / 9,
                       child: Container(
-                        color: Colors.black,
+                        color: R.colors.grayABABAB,
                       ),
                     ),
                     CustomVideoPlayer(

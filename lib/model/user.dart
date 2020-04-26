@@ -1,44 +1,28 @@
 import 'package:conlamduoc/core/define.dart';
-
-
 import 'package:conlamduoc/model/mapper_object.dart';
-
 import 'package:conlamduoc/util/reflector.dart';
 
 @reflector
 class User extends MapperObject {
   int userId;
   String username;
-  String email;
-  String img;
-  String name;
-  String nameSlug;
-  bool isActive;
-  String deviceToken;
+  String parentEmail;
+  String avatar;
+  String fullName;
   DateTime birthday;
-  String phone;
-  String country;
-  String city;
+  String parentPhone;
   Gender gender;
-  num weight;
-  num height;
-  String accessToken;
-  DateTime lastLogin;
-
-  DateTime addDate;
-  DateTime updateDate;
-
+  DateTime createdAt;
 
   @override
-  bool operator == (other) {
+  bool operator ==(other) {
     if (other is User) {
       return userId == other.userId;
     }
     return false;
   }
 
-  String getUsername(){
+  String getUsername() {
     return username;
   }
-  
 }

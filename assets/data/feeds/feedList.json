@@ -3,30 +3,44 @@
     {
       "id": 1,
       "challengeId": 1,
-      "challengeCoins": 20,
+      "challengeCoins": 30,
       "challengeName": "Rửa tay 6 bước",
-      "userId": 1,
-      "avatarUrl": "https://i.ibb.co/WF88SD4/3-DSC-4001.jpg",
-      "fullName": "Trần Hải Yến",
+      "userId": 3,
+      "avatarUrl": "https://i.ibb.co/DGzRJL5/r-a-tay.jpg",
+      "fullName": "Lê Minh Huy",
       "content": "Thử thách này rất thú vị, mọi người vào cùng tham gia với mình nhé :3",
-      "isLiked": true,
-      "imageUrl": "https://i.ibb.co/J3YCGc7/whale-image.png",
-      "videoUrl": "",
+      "isLiked": false,
+      "imageUrl": "",
+      "videoUrl": "https://hackcovy-conlamduocproject-server.s3.us-east-2.amazonaws.com/video/feed/feed_RuaTay.mp4",
       "createdAt": "1587719246000"
     },
     {
       "id": 2,
-      "challengeId": 1,
+      "challengeId": 2,
       "challengeCoins": 20,
-      "challengeName": "Rửa tay 6 bước",
+      "challengeName": "Vẽ tranh gia đình",
       "userId": 2,
-      "avatarUrl": "https://i.ibb.co/J3YCGc7/whale-image.png",
+      "avatarUrl": "https://i.ibb.co/3Y47p00/v-tranh.jpg",
       "fullName": "Nguyễn Minh Anh",
-      "content": "Let's join, let's join mọi người ơi!!!!\nLet's join, let's join mọi người ơi!!!!\nLet's join, let's join mọi người ơi!!!!",
+      "content": "Gia đình mình nè mọi người! Mọi người cùng tham gia với mình nhé",
+      "isLiked": true,
+      "imageUrl": "https://i.ibb.co/KqfcpC4/v-tranh.png",
+      "videoUrl": "",
+      "createdAt": "1587719246000"
+    },
+	{
+	  "id": 3,
+      "challengeId": 3,
+      "challengeCoins": 30,
+      "challengeName": "Tập thể dục",
+      "userId": 1,
+      "avatarUrl": "https://i.ibb.co/znSWsLf/the-duc.png",
+      "fullName": "Trần Hải Yến",
+      "content": "Tập thể dục giúp mình có sức khỏe khỏe mạnh",
       "isLiked": true,
       "imageUrl": "",
-      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      "videoUrl": "https://hackcovy-conlamduocproject-server.s3.us-east-2.amazonaws.com/video/feed/feed_TapTheDuc.mp4",
       "createdAt": "1587719246000"
-    }
+	}
   ]
 }

@@ -65,7 +65,7 @@ class _ChallengePageState extends State<ChallengePage> {
           Container(
             margin: EdgeInsets.only(right: 10),
             child: GestureDetector(
-              onTap: () => pushPage(context, ProfilePage()),
+              onTap: () => pushPage(context, ProfilePage(userInfo: RawDataManager.userList[0])),
               child: Image.asset(
                 R.myIcons.appbarProfile,
                 width: 25,

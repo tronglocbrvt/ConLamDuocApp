@@ -66,7 +66,7 @@ class _FeedPageState extends State<FeedPage> {
           Container(
             margin: EdgeInsets.only(right: 10),
             child: GestureDetector(
-              onTap: () => pushPage(context, ProfilePage()),
+              onTap: () => pushPage(context, ProfilePage(userInfo: RawDataManager.userList[0])),
               child: Image.asset(
                 R.myIcons.appbarProfile,
                 width: 25,

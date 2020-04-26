@@ -1,3 +1,4 @@
+import 'package:conlamduoc/manager/raw_data_manager.dart';
 import 'package:conlamduoc/page/profile/profile_page.dart';
 import 'package:conlamduoc/widget/loading_dot.dart';
 import 'package:flutter/cupertino.dart';
@@ -58,7 +59,7 @@ class _GamePageState extends State<GamePage> {
           Container(
             margin: EdgeInsets.only(right: 10),
             child: GestureDetector(
-              onTap: () => pushPage(context, ProfilePage()),
+              onTap: () => pushPage(context, ProfilePage(userInfo: RawDataManager.userList[0])),
               child: Image.asset(
                 R.myIcons.appbarProfile,
                 width: 25,

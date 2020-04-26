@@ -90,6 +90,7 @@ class _ChallengePageState extends State<ChallengePage> {
                   Challenge element = challengeList[index];
                   String name = element.nameChallenge;
                   String description = element.describe;
+                  String thumbnailImageUrl  = element.thumbnailImageUrl!=null? element.thumbnailImageUrl: R.myIcons.appbarChallenge;
                   String img = element.img != null
                       ? element.img
                       : R.myIcons.appbarChallenge;
@@ -104,9 +105,10 @@ class _ChallengePageState extends State<ChallengePage> {
                         coins: coin,
                         content: description,
                         title: name,
-                        thumbnailImageUrl: img,
-                      ));
-                },
+                        thumbnailImageUrl: thumbnailImageUrl,
+                        img: img,
+                        ));
+                        },
               ),
             )),
     );

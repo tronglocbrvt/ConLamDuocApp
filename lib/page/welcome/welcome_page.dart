@@ -1,6 +1,7 @@
 import 'package:conlamduoc/core/helper.dart';
 import 'package:conlamduoc/page/app/app_page.dart';
 import 'package:conlamduoc/page/signup/signup_page.dart';
+import 'package:conlamduoc/manager/user_manager.dart';
 import 'package:conlamduoc/page/forget_password/forget_pass_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -215,7 +216,8 @@ class WelcomePage extends StatelessWidget {
     //   showAlert(context, R.strings.notice, "Đăng nhập không thành công", null);
 
     //Debug
-    print(RawDataManager.userList[0].username);
+    print(RawDataManager.userList[0].name);
+    UserManager.currentUser.copy(RawDataManager.userList[0]);
     pushPage(context, AppPage());
   }
 

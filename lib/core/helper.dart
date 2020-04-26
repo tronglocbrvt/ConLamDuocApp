@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:conlamduoc/widget/custom_dialog.dart/custom_alert_dialog.dart';
+import 'package:conlamduoc/widget/ui_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,8 @@ import 'package:conlamduoc/core/R.dart';
 import 'package:conlamduoc/main.dart';
 import 'package:conlamduoc/core/define.dart';
 import 'package:conlamduoc/manager/raw_data_manager.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 
 // === MAIN === //
 Future<void> initialize(BuildContext context) async {
@@ -215,6 +218,63 @@ void hideLoading(BuildContext context) {
   }
 }
 
+Future<File> pickImage(BuildContext context, {double maxWidth = 1920, double maxHeight = 1920}) async {
+
+  Widget w = Container(
+    child: Column(
+      children: <Widget>[
+        Text("Chọn ảnh"),
+        Divider(color: R.colors.blurGreen, height: 24),
+        UIButton(
+          text: "Thư viện",
+          color: R.colors.lightBlue,
+          onTap: () async {
+            File photo = await ImagePicker.pickImage(source: ImageSource.gallery, maxWidth: maxWidth, maxHeight: maxHeight);
+            if (photo == null) {
+              pop(context, null);
+            }
+            else {
+              File result = await _cropImage(photo);
+              pop(context, result);
+            }
+          },
+        ),
+        SizedBox(height: 10),
+        UIButton(
+          text: "Máy ảnh",
+          color: R.colors.lightBlue,
+          onTap: () async {
+            File photo = await ImagePicker.pickImage(source: ImageSource.camera, maxWidth: maxWidth, maxHeight: maxHeight);
+            if (photo == null) {
+              pop(context, null);
+            }
+            else {
+              File result = await _cropImage(photo);
+              pop(context, result);
+            }
+          },
+        ),
+        SizedBox(height: 30),
+        UIButton(
+          text: "Hủy",
+          color: R.colors.lightBlue,
+          onTap: () => pop(context, null),
+        ),
+      ],
+    ),
+  );
+
+  File photo = await showActionSheet<File>(context, w, 300, []);
+
+  return photo;
+}
+
+Future<File> _cropImage(File imageFile) async {
+  File croppedFile = await ImageCropper.cropImage(
+    sourcePath: imageFile.path,
+  );
+  return croppedFile;
+}
 class _IndicatorRoute<T> extends ModalRoute {
   _IndicatorRoute(
       {bool barrierDismissible = true,

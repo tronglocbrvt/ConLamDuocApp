@@ -32,6 +32,7 @@ class CustomCell extends StatelessWidget {
   final bool enableFFButton;
   final bool isFollowButton;
   final Function pressFFButton;
+  final Function pressFFButton2;
 
   // + 3 dots
   final bool enablePopupMenuButton;
@@ -65,6 +66,7 @@ class CustomCell extends StatelessWidget {
     this.enableFFButton = false,
     this.isFollowButton = true,
     this.pressFFButton,
+    this.pressFFButton2,
     this.enablePopupMenuButton = false,
     this.customPopupMenu,
     this.enableCloseButton = false,
@@ -77,34 +79,27 @@ class CustomCell extends StatelessWidget {
   Widget _renderFFButton() {
     return (this.enableFFButton
         ? Container(
-            padding: EdgeInsets.only(
-              left: R.appRatio.appSpacing10,
-              right: R.appRatio.appSpacing5,
-            ),
-            child: UIButton(
-              text: (!this.isFollowButton
-                  ? R.strings.unFollow
-                  : R.strings.follow),
-              textColor: (!this.isFollowButton
-                  ? R.colors.gray515151
-                  : R.colors.oldYellow),
-              textSize: R.appRatio.appFontSize12,
-              radius: 0,
-              width: R.appRatio.appWidth80,
-              height: R.appRatio.appHeight30,
-              enableShadow: false,
-              border: Border.all(
-                width: 1,
-                color: (!this.isFollowButton
-                    ? R.colors.gray515151
-                    : R.colors.oldYellow),
+           
+            child: Row(
+              children: <Widget>[
+              Container(
+                child: FlatButton(
+                child: Icon(Icons.camera_alt,size: 25,),
+                onPressed: () {
+                  if (this.pressFFButton != null) {
+                    this.pressFFButton();
+                  }
+                },)
               ),
-              onTap: () {
+            FlatButton(
+              child: Icon(Icons.image,size: 25,),
+              onPressed: () {
                 if (this.pressFFButton != null) {
-                  this.pressFFButton();
+                  this.pressFFButton2();
                 }
               },
-            ),
+            )
+            ],)
           )
         : Container());
   }

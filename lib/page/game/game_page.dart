@@ -1,4 +1,5 @@
 import 'package:conlamduoc/page/profile/profile_page.dart';
+import 'package:conlamduoc/page/game/game_play_page.dart';
 import 'package:conlamduoc/widget/loading_dot.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,9 @@ class _GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
     Widget _buildWidget = Scaffold(
-      appBar: AppBar(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(0),
+        child: AppBar(
         backgroundColor: R.colors.appBarBackground,
         centerTitle: true,
         leading: Container(
@@ -68,10 +71,37 @@ class _GamePageState extends State<GamePage> {
           ),
         ],
       ),
+      ),
       backgroundColor: R.colors.appBackground,
       body: (_isLoading
           ? LoadingDotStyle02()
-          : Center(child: Text(R.strings.game))),
+          : Center(
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage(R.images.game_background),
+                    ),
+                  ),),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(R.images.game_name),
+                      GestureDetector( 
+                        child: Image.asset(R.images.button_play, width: 100, height: 100,),
+                        onTap: (){
+                          pushPage(context, GamePlay());
+                        },
+                      )
+                    ],),
+                  
+              ],) 
+          
+          )),
     );
 
     return NotificationListener<OverscrollIndicatorNotification>(

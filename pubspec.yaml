@@ -35,6 +35,8 @@ dependencies:
 
   tiengviet: ^0.3.0
 
+  
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -68,6 +70,7 @@ flutter:
     - assets/data/lessons/lessonList.json
     - assets/data/feeds/feedList.json
     - assets/data/challenge/challengeList.json
+    - assets/data/quizzes/quizList.json
     - assets/localization/en.json
 
     - assets/logo/logo.png
@@ -111,3 +114,13 @@ flutter:
     - assets/images/avatar.png
     - assets/images/challenge1.png
     - assets/images/challenge2.png
+    
+    - assets/images/game_background.png
+    - assets/images/game_name.png
+    - assets/images/game_line.png
+    - assets/images/game_process.png
+    - assets/images/button_play.png
+    - assets/images/button_howtoplay.png
+    - assets/images/game_incorrect.png
+    - assets/images/game_correct.png
+    - assets/images/layout_game4.png

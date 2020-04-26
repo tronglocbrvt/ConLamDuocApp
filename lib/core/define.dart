@@ -22,3 +22,19 @@ enum PlatformType {
 
 @reflector
 enum Gender { Male, Female }
+
+@reflector
+enum Answer {
+	A,
+	B,
+	C,
+	D,
+}
+
+@reflector
+enum QuizLevel {
+	Easy,
+	Medium,
+	Hard
+}
+

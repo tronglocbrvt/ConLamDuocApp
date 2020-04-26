@@ -527,6 +527,15 @@ class _Images {
 
   final String whale_image = "assets/images/whale_image.png";
   final String default_image = "assets/images/default_image.png";
+  final String game_background = "assets/images/game_background.png";
+  final String game_correct = "assets/images/game_correct.png";
+  final String game_inCorect = "assets/images/game_incorrect.png";
+  final String game_name = "assets/images/game_name.png";
+  final String game_line = "assets/images/game_line.png";
+  final String game_proccess = "assets/images/game_proccess.png";
+  final String button_play = "assets/images/button_play.png";
+  final String button_howtoplay = "assets/images/button_howtoplay.png";
+  final String layout_game4 = "assets/images/layout_game4.png";
 }
 
 @reflector

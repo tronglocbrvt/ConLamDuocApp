@@ -76,14 +76,14 @@ class ChallengeDetail extends StatelessWidget {
                 enable: true,
                 fontWeight: FontWeight.bold,
                 onTap: () async {
-                  print(UserManager.currentUser.name);
+                  print(UserManager.currentUser.fullName);
                   pushPage(context, ChallengeUpload( 
                     challengeCoins: coin,
                     challengeId: id,
                     challengeName: name,
                     userId: UserManager.currentUser.userId,
-                    avatarUrl: UserManager.currentUser.img,
-                    fullName: UserManager.currentUser.name,
+                    avatarUrl: UserManager.currentUser.avatar,
+                    fullName: UserManager.currentUser.fullName,
                   ));
                   //openSelectPhoto(context);
                 },

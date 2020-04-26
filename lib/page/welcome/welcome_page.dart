@@ -216,7 +216,7 @@ class WelcomePage extends StatelessWidget {
     //   showAlert(context, R.strings.notice, "Đăng nhập không thành công", null);
 
     //Debug
-    print(RawDataManager.userList[0].name);
+    print(RawDataManager.userList[0].fullName);
     UserManager.currentUser.copy(RawDataManager.userList[0]);
     pushPage(context, AppPage());
   }
